@@ -7,27 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ADC6B85C2860716900A78C16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC6B85B2860716900A78C16 /* AppDelegate.swift */; };
-		ADC6B85E2860716900A78C16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC6B85D2860716900A78C16 /* SceneDelegate.swift */; };
-		ADC6B8602860716900A78C16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC6B85F2860716900A78C16 /* ViewController.swift */; };
-		ADC6B8632860716900A78C16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADC6B8612860716900A78C16 /* Main.storyboard */; };
-		ADC6B8652860716A00A78C16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADC6B8642860716A00A78C16 /* Assets.xcassets */; };
-		ADC6B8682860716A00A78C16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADC6B8662860716A00A78C16 /* LaunchScreen.storyboard */; };
+		ADBEB618286083A4008D44B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBEB617286083A4008D44B4 /* ViewController.swift */; };
+		ADBEB61B286083A4008D44B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBEB619286083A4008D44B4 /* Main.storyboard */; };
+		ADBEB61D286083A5008D44B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADBEB61C286083A5008D44B4 /* Assets.xcassets */; };
+		ADBEB620286083A5008D44B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADBEB61E286083A5008D44B4 /* LaunchScreen.storyboard */; };
+		ADBEB6292860841B008D44B4 /* Application in Resources */ = {isa = PBXBuildFile; fileRef = ADBEB6272860841B008D44B4 /* Application */; };
+		ADBEB62A2860841B008D44B4 /* Flows in Resources */ = {isa = PBXBuildFile; fileRef = ADBEB6282860841B008D44B4 /* Flows */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ADC6B8582860716900A78C16 /* free-to-game-ui-kit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "free-to-game-ui-kit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADC6B85B2860716900A78C16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ADC6B85D2860716900A78C16 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ADC6B85F2860716900A78C16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		ADC6B8622860716900A78C16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		ADC6B8642860716A00A78C16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ADC6B8672860716A00A78C16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		ADC6B8692860716A00A78C16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADBEB610286083A4008D44B4 /* free-to-game-ui-kit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "free-to-game-ui-kit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADBEB617286083A4008D44B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ADBEB61A286083A4008D44B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ADBEB61C286083A5008D44B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ADBEB61F286083A5008D44B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ADBEB621286083A5008D44B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADBEB6272860841B008D44B4 /* Application */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Application; sourceTree = "<group>"; };
+		ADBEB6282860841B008D44B4 /* Flows */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Flows; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		ADC6B8552860716900A78C16 /* Frameworks */ = {
+		ADBEB60D286083A4008D44B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,32 +37,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ADC6B84F2860716900A78C16 = {
+		ADBEB607286083A4008D44B4 = {
 			isa = PBXGroup;
 			children = (
-				ADC6B85A2860716900A78C16 /* free-to-game-ui-kit */,
-				ADC6B8592860716900A78C16 /* Products */,
+				ADBEB612286083A4008D44B4 /* free-to-game-ui-kit */,
+				ADBEB611286083A4008D44B4 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		ADC6B8592860716900A78C16 /* Products */ = {
+		ADBEB611286083A4008D44B4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ADC6B8582860716900A78C16 /* free-to-game-ui-kit.app */,
+				ADBEB610286083A4008D44B4 /* free-to-game-ui-kit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ADC6B85A2860716900A78C16 /* free-to-game-ui-kit */ = {
+		ADBEB612286083A4008D44B4 /* free-to-game-ui-kit */ = {
 			isa = PBXGroup;
 			children = (
-				ADC6B85B2860716900A78C16 /* AppDelegate.swift */,
-				ADC6B85D2860716900A78C16 /* SceneDelegate.swift */,
-				ADC6B85F2860716900A78C16 /* ViewController.swift */,
-				ADC6B8612860716900A78C16 /* Main.storyboard */,
-				ADC6B8642860716A00A78C16 /* Assets.xcassets */,
-				ADC6B8662860716A00A78C16 /* LaunchScreen.storyboard */,
-				ADC6B8692860716A00A78C16 /* Info.plist */,
+				ADBEB6272860841B008D44B4 /* Application */,
+				ADBEB6282860841B008D44B4 /* Flows */,
+				ADBEB617286083A4008D44B4 /* ViewController.swift */,
+				ADBEB619286083A4008D44B4 /* Main.storyboard */,
+				ADBEB61C286083A5008D44B4 /* Assets.xcassets */,
+				ADBEB61E286083A5008D44B4 /* LaunchScreen.storyboard */,
+				ADBEB621286083A5008D44B4 /* Info.plist */,
 			);
 			path = "free-to-game-ui-kit";
 			sourceTree = "<group>";
@@ -70,13 +70,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ADC6B8572860716900A78C16 /* free-to-game-ui-kit */ = {
+		ADBEB60F286083A4008D44B4 /* free-to-game-ui-kit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADC6B86C2860716A00A78C16 /* Build configuration list for PBXNativeTarget "free-to-game-ui-kit" */;
+			buildConfigurationList = ADBEB624286083A5008D44B4 /* Build configuration list for PBXNativeTarget "free-to-game-ui-kit" */;
 			buildPhases = (
-				ADC6B8542860716900A78C16 /* Sources */,
-				ADC6B8552860716900A78C16 /* Frameworks */,
-				ADC6B8562860716900A78C16 /* Resources */,
+				ADBEB60C286083A4008D44B4 /* Sources */,
+				ADBEB60D286083A4008D44B4 /* Frameworks */,
+				ADBEB60E286083A4008D44B4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -84,25 +84,25 @@
 			);
 			name = "free-to-game-ui-kit";
 			productName = "free-to-game-ui-kit";
-			productReference = ADC6B8582860716900A78C16 /* free-to-game-ui-kit.app */;
+			productReference = ADBEB610286083A4008D44B4 /* free-to-game-ui-kit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		ADC6B8502860716900A78C16 /* Project object */ = {
+		ADBEB608286083A4008D44B4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
-					ADC6B8572860716900A78C16 = {
+					ADBEB60F286083A4008D44B4 = {
 						CreatedOnToolsVersion = 13.3;
 					};
 				};
 			};
-			buildConfigurationList = ADC6B8532860716900A78C16 /* Build configuration list for PBXProject "free-to-game-ui-kit" */;
+			buildConfigurationList = ADBEB60B286083A4008D44B4 /* Build configuration list for PBXProject "free-to-game-ui-kit" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,55 +110,55 @@
 				en,
 				Base,
 			);
-			mainGroup = ADC6B84F2860716900A78C16;
-			productRefGroup = ADC6B8592860716900A78C16 /* Products */;
+			mainGroup = ADBEB607286083A4008D44B4;
+			productRefGroup = ADBEB611286083A4008D44B4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ADC6B8572860716900A78C16 /* free-to-game-ui-kit */,
+				ADBEB60F286083A4008D44B4 /* free-to-game-ui-kit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		ADC6B8562860716900A78C16 /* Resources */ = {
+		ADBEB60E286083A4008D44B4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADC6B8682860716A00A78C16 /* LaunchScreen.storyboard in Resources */,
-				ADC6B8652860716A00A78C16 /* Assets.xcassets in Resources */,
-				ADC6B8632860716900A78C16 /* Main.storyboard in Resources */,
+				ADBEB620286083A5008D44B4 /* LaunchScreen.storyboard in Resources */,
+				ADBEB61D286083A5008D44B4 /* Assets.xcassets in Resources */,
+				ADBEB61B286083A4008D44B4 /* Main.storyboard in Resources */,
+				ADBEB62A2860841B008D44B4 /* Flows in Resources */,
+				ADBEB6292860841B008D44B4 /* Application in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		ADC6B8542860716900A78C16 /* Sources */ = {
+		ADBEB60C286083A4008D44B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADC6B8602860716900A78C16 /* ViewController.swift in Sources */,
-				ADC6B85C2860716900A78C16 /* AppDelegate.swift in Sources */,
-				ADC6B85E2860716900A78C16 /* SceneDelegate.swift in Sources */,
+				ADBEB618286083A4008D44B4 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ADC6B8612860716900A78C16 /* Main.storyboard */ = {
+		ADBEB619286083A4008D44B4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ADC6B8622860716900A78C16 /* Base */,
+				ADBEB61A286083A4008D44B4 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		ADC6B8662860716A00A78C16 /* LaunchScreen.storyboard */ = {
+		ADBEB61E286083A5008D44B4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ADC6B8672860716A00A78C16 /* Base */,
+				ADBEB61F286083A5008D44B4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		ADC6B86A2860716A00A78C16 /* Debug */ = {
+		ADBEB622286083A5008D44B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +226,7 @@
 			};
 			name = Debug;
 		};
-		ADC6B86B2860716A00A78C16 /* Release */ = {
+		ADBEB623286083A5008D44B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,7 +280,7 @@
 			};
 			name = Release;
 		};
-		ADC6B86D2860716A00A78C16 /* Debug */ = {
+		ADBEB625286083A5008D44B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -299,16 +299,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACH_O_TYPE = mh_execute;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "home.free-to-game-ui-kit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		ADC6B86E2860716A00A78C16 /* Release */ = {
+		ADBEB626286083A5008D44B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -327,37 +328,38 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACH_O_TYPE = mh_execute;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "home.free-to-game-ui-kit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ADC6B8532860716900A78C16 /* Build configuration list for PBXProject "free-to-game-ui-kit" */ = {
+		ADBEB60B286083A4008D44B4 /* Build configuration list for PBXProject "free-to-game-ui-kit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ADC6B86A2860716A00A78C16 /* Debug */,
-				ADC6B86B2860716A00A78C16 /* Release */,
+				ADBEB622286083A5008D44B4 /* Debug */,
+				ADBEB623286083A5008D44B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADC6B86C2860716A00A78C16 /* Build configuration list for PBXNativeTarget "free-to-game-ui-kit" */ = {
+		ADBEB624286083A5008D44B4 /* Build configuration list for PBXNativeTarget "free-to-game-ui-kit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ADC6B86D2860716A00A78C16 /* Debug */,
-				ADC6B86E2860716A00A78C16 /* Release */,
+				ADBEB625286083A5008D44B4 /* Debug */,
+				ADBEB626286083A5008D44B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = ADC6B8502860716900A78C16 /* Project object */;
+	rootObject = ADBEB608286083A4008D44B4 /* Project object */;
 }
