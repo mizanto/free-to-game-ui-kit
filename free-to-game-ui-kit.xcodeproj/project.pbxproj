@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		237248835F1E67E7C8DE0D29 /* Pods_free_to_game_ui_kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F6F65F3871C22290F69633 /* Pods_free_to_game_ui_kit.framework */; };
+		ADBB60802861B54E003E26A3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB607F2861B54E003E26A3 /* API.swift */; };
+		ADBB60822861B572003E26A3 /* API+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60812861B572003E26A3 /* API+Error.swift */; };
+		ADBB60842861B595003E26A3 /* API+EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60832861B595003E26A3 /* API+EndPoint.swift */; };
+		ADBB60872861B5C8003E26A3 /* ShortGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60862861B5C8003E26A3 /* ShortGameModel.swift */; };
+		ADBB60892861B5E1003E26A3 /* ExtendedGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60882861B5E1003E26A3 /* ExtendedGameModel.swift */; };
+		ADBB608B2861B600003E26A3 /* SystemRequirementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB608A2861B600003E26A3 /* SystemRequirementsModel.swift */; };
+		ADBB608D2861B623003E26A3 /* ScreenshotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB608C2861B623003E26A3 /* ScreenshotModel.swift */; };
 		ADBEB638286085A8008D44B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBEB637286085A8008D44B4 /* AppDelegate.swift */; };
 		ADBEB63A286085A8008D44B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBEB639286085A8008D44B4 /* SceneDelegate.swift */; };
 		ADBEB63C286085A8008D44B4 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBEB63B286085A8008D44B4 /* EmptyViewController.swift */; };
@@ -24,6 +31,13 @@
 		809C746846DF78657648A85B /* Pods-free-to-game-ui-kit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-free-to-game-ui-kit.debug.xcconfig"; path = "Target Support Files/Pods-free-to-game-ui-kit/Pods-free-to-game-ui-kit.debug.xcconfig"; sourceTree = "<group>"; };
 		902AF9A75D3487C143F1E05F /* Pods-free-to-game-ui-kit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-free-to-game-ui-kit.release.xcconfig"; path = "Target Support Files/Pods-free-to-game-ui-kit/Pods-free-to-game-ui-kit.release.xcconfig"; sourceTree = "<group>"; };
 		A7F6F65F3871C22290F69633 /* Pods_free_to_game_ui_kit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_free_to_game_ui_kit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADBB607F2861B54E003E26A3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		ADBB60812861B572003E26A3 /* API+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Error.swift"; sourceTree = "<group>"; };
+		ADBB60832861B595003E26A3 /* API+EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+EndPoint.swift"; sourceTree = "<group>"; };
+		ADBB60862861B5C8003E26A3 /* ShortGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortGameModel.swift; sourceTree = "<group>"; };
+		ADBB60882861B5E1003E26A3 /* ExtendedGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedGameModel.swift; sourceTree = "<group>"; };
+		ADBB608A2861B600003E26A3 /* SystemRequirementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemRequirementsModel.swift; sourceTree = "<group>"; };
+		ADBB608C2861B623003E26A3 /* ScreenshotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotModel.swift; sourceTree = "<group>"; };
 		ADBEB634286085A8008D44B4 /* free-to-game-ui-kit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "free-to-game-ui-kit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBEB637286085A8008D44B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADBEB639286085A8008D44B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,8 +70,28 @@
 				809C746846DF78657648A85B /* Pods-free-to-game-ui-kit.debug.xcconfig */,
 				902AF9A75D3487C143F1E05F /* Pods-free-to-game-ui-kit.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		ADBB607E2861B52E003E26A3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ADBB607F2861B54E003E26A3 /* API.swift */,
+				ADBB60812861B572003E26A3 /* API+Error.swift */,
+				ADBB60832861B595003E26A3 /* API+EndPoint.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		ADBB60852861B5A8003E26A3 /* RawModels */ = {
+			isa = PBXGroup;
+			children = (
+				ADBB60862861B5C8003E26A3 /* ShortGameModel.swift */,
+				ADBB60882861B5E1003E26A3 /* ExtendedGameModel.swift */,
+				ADBB608A2861B600003E26A3 /* SystemRequirementsModel.swift */,
+				ADBB608C2861B623003E26A3 /* ScreenshotModel.swift */,
+			);
+			path = RawModels;
 			sourceTree = "<group>";
 		};
 		ADBEB62B286085A8008D44B4 = {
@@ -81,6 +115,8 @@
 		ADBEB636286085A8008D44B4 /* free-to-game-ui-kit */ = {
 			isa = PBXGroup;
 			children = (
+				ADBB60852861B5A8003E26A3 /* RawModels */,
+				ADBB607E2861B52E003E26A3 /* API */,
 				ADBEB64B286085BC008D44B4 /* Application */,
 				ADBEB65328608672008D44B4 /* Flows */,
 				ADBEB640286085A9008D44B4 /* Assets.xcassets */,
@@ -259,13 +295,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADBEB65228608644008D44B4 /* AppCoordinator.swift in Sources */,
+				ADBB60842861B595003E26A3 /* API+EndPoint.swift in Sources */,
+				ADBB60822861B572003E26A3 /* API+Error.swift in Sources */,
 				ADBEB65628608695008D44B4 /* MainCoordinator.swift in Sources */,
 				ADBEB64E28608603008D44B4 /* Coordinator.swift in Sources */,
 				ADBEB63C286085A8008D44B4 /* EmptyViewController.swift in Sources */,
 				ADBEB638286085A8008D44B4 /* AppDelegate.swift in Sources */,
 				ADBEB63A286085A8008D44B4 /* SceneDelegate.swift in Sources */,
+				ADBB608B2861B600003E26A3 /* SystemRequirementsModel.swift in Sources */,
+				ADBB608D2861B623003E26A3 /* ScreenshotModel.swift in Sources */,
 				ADBEB65928608700008D44B4 /* EmptyViewControllerAssembly.swift in Sources */,
+				ADBB60802861B54E003E26A3 /* API.swift in Sources */,
+				ADBB60872861B5C8003E26A3 /* ShortGameModel.swift in Sources */,
 				ADBEB65028608620008D44B4 /* CoordinatorFactory.swift in Sources */,
+				ADBB60892861B5E1003E26A3 /* ExtendedGameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
