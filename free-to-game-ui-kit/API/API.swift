@@ -16,6 +16,25 @@ struct API {
     private let decoder = JSONDecoder()
     private let apiQueue = DispatchQueue(label: "API", qos: .default, attributes: .concurrent)
     
+    private func sendRequest<T: Codable>(endpoint: EndPoint) async throws -> T {
+        let request = URLRequest(url: endpoint.url, timeoutInterval: Constants.timeoutInterval)
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 200 else {
+            throw URLError(.badServerResponse)
+        }
+        
+        let decoded = try decoder.decode(T.self, from: data)
+        
+        return decoded
+    }
+    
+    func games() async throws -> [ShortGameModel] {
+        return try await sendRequest(endpoint: .games)
+    }
+    
     private func sendRequest<T: Codable>(endPoint: EndPoint) -> AnyPublisher<T, Error> {
         let request = URLRequest(url: endPoint.url, timeoutInterval: Constants.timeoutInterval)
         return URLSession.shared.dataTaskPublisher(for: request)

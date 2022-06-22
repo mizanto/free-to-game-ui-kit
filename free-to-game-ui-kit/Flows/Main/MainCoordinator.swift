@@ -16,11 +16,20 @@ final class MainCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        showScreen()
+        showGamesScreen()
     }
     
-    private func showScreen() {
+    private func setRootViewController(_ viewController: UIViewController) {
+        navigationController.setViewControllers([viewController], animated: false)
+    }
+    
+    private func showGamesScreen() {
+        let vc = GamesAssembly.build()
+        setRootViewController(vc)
+    }
+    
+    private func showEmptyScreen() {
         let vc = EmptyViewControllerAssembly.build()
-        navigationController.setViewControllers([vc], animated: false)
+        setRootViewController(vc)
     }
 }
