@@ -12,6 +12,10 @@
 		AD856586286229A000BA430A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD856585286229A000BA430A /* UIView+Extension.swift */; };
 		AD856589286330E000BA430A /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD856588286330E000BA430A /* TagView.swift */; };
 		AD85658B2863312900BA430A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85658A2863312900BA430A /* CardView.swift */; };
+		AD85658E2863665700BA430A /* GameCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85658D2863665700BA430A /* GameCellModel.swift */; };
+		AD856590286366E200BA430A /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85658F286366E200BA430A /* GamesViewModel.swift */; };
+		AD85659228636BAD00BA430A /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659128636BAD00BA430A /* NSObject+Extension.swift */; };
+		AD85659528636D0900BA430A /* StringIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659428636D0900BA430A /* StringIdentifiable.swift */; };
 		ADBB60802861B54E003E26A3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB607F2861B54E003E26A3 /* API.swift */; };
 		ADBB60822861B572003E26A3 /* API+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60812861B572003E26A3 /* API+Error.swift */; };
 		ADBB60842861B595003E26A3 /* API+EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60832861B595003E26A3 /* API+EndPoint.swift */; };
@@ -41,6 +45,10 @@
 		AD856585286229A000BA430A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		AD856588286330E000BA430A /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		AD85658A2863312900BA430A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		AD85658D2863665700BA430A /* GameCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCellModel.swift; sourceTree = "<group>"; };
+		AD85658F286366E200BA430A /* GamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
+		AD85659128636BAD00BA430A /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		AD85659428636D0900BA430A /* StringIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringIdentifiable.swift; sourceTree = "<group>"; };
 		ADBB607F2861B54E003E26A3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ADBB60812861B572003E26A3 /* API+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Error.swift"; sourceTree = "<group>"; };
 		ADBB60832861B595003E26A3 /* API+EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+EndPoint.swift"; sourceTree = "<group>"; };
@@ -89,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				AD856585286229A000BA430A /* UIView+Extension.swift */,
+				AD85659128636BAD00BA430A /* NSObject+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -100,6 +109,23 @@
 				AD85658A2863312900BA430A /* CardView.swift */,
 			);
 			path = CommonViews;
+			sourceTree = "<group>";
+		};
+		AD85658C2863663A00BA430A /* GameCell */ = {
+			isa = PBXGroup;
+			children = (
+				AD8565822862295400BA430A /* GameCell.swift */,
+				AD85658D2863665700BA430A /* GameCellModel.swift */,
+			);
+			path = GameCell;
+			sourceTree = "<group>";
+		};
+		AD85659328636C4700BA430A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AD85659428636D0900BA430A /* StringIdentifiable.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		ADBB607E2861B52E003E26A3 /* API */ = {
@@ -126,9 +152,10 @@
 		ADBB608E286216ED003E26A3 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				AD85658C2863663A00BA430A /* GameCell */,
 				ADBB609128621E08003E26A3 /* GamesAssembly.swift */,
 				ADBB608F28621722003E26A3 /* GamesViewController.swift */,
-				AD8565822862295400BA430A /* GameCell.swift */,
+				AD85658F286366E200BA430A /* GamesViewModel.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -154,6 +181,7 @@
 		ADBEB636286085A8008D44B4 /* free-to-game-ui-kit */ = {
 			isa = PBXGroup;
 			children = (
+				AD85659328636C4700BA430A /* Helpers */,
 				AD856587286330AE00BA430A /* CommonViews */,
 				AD8565842862298500BA430A /* Extensions */,
 				ADBB60852861B5A8003E26A3 /* RawModels */,
@@ -341,16 +369,20 @@
 				ADBB60842861B595003E26A3 /* API+EndPoint.swift in Sources */,
 				ADBB60822861B572003E26A3 /* API+Error.swift in Sources */,
 				ADBEB65628608695008D44B4 /* MainCoordinator.swift in Sources */,
+				AD85658E2863665700BA430A /* GameCellModel.swift in Sources */,
 				ADBEB64E28608603008D44B4 /* Coordinator.swift in Sources */,
 				ADBEB63C286085A8008D44B4 /* EmptyViewController.swift in Sources */,
 				AD85658B2863312900BA430A /* CardView.swift in Sources */,
 				ADBEB638286085A8008D44B4 /* AppDelegate.swift in Sources */,
 				ADBEB63A286085A8008D44B4 /* SceneDelegate.swift in Sources */,
+				AD85659228636BAD00BA430A /* NSObject+Extension.swift in Sources */,
 				ADBB608B2861B600003E26A3 /* SystemRequirementsModel.swift in Sources */,
 				ADBB608D2861B623003E26A3 /* ScreenshotModel.swift in Sources */,
 				AD856589286330E000BA430A /* TagView.swift in Sources */,
+				AD85659528636D0900BA430A /* StringIdentifiable.swift in Sources */,
 				AD8565832862295400BA430A /* GameCell.swift in Sources */,
 				AD856586286229A000BA430A /* UIView+Extension.swift in Sources */,
+				AD856590286366E200BA430A /* GamesViewModel.swift in Sources */,
 				ADBB609228621E08003E26A3 /* GamesAssembly.swift in Sources */,
 				ADBEB65928608700008D44B4 /* EmptyViewControllerAssembly.swift in Sources */,
 				ADBB60802861B54E003E26A3 /* API.swift in Sources */,

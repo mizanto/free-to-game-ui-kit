@@ -5,62 +5,67 @@
 //  Created by Sergey Bendak on 21.06.2022.
 //
 
-import UIKit
-import SnapKit
+import Combine
 import Kingfisher
+import SnapKit
+import UIKit
 
 class GamesViewController: UIViewController {
     
-    let api = API()
+    var viewModel: GamesViewModel!
     
-    private lazy var tableView: UITableView = {
-        let tv = UITableView()
-        tv.tableFooterView = UIView()
-        tv.rowHeight = UITableView.automaticDimension
-        tv.separatorStyle = .none
-        tv.delegate = self
-        tv.dataSource = self
-        return tv
-    }()
-    
-    var games: [ShortGameModel] = []
+    private var tableView: UITableView = GamesViewController.createTableView()
+    private var subscriptions = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        setupLayout()
+        bindToViewModel()
+        viewModel.viewDidLoad()
+    }
+    
+    private func setupLayout() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.snp.edges)
         }
-        
-        tableView.register(GameCell.self, forCellReuseIdentifier: "GameCell")
-        
-        loadGames()
     }
     
-    private func loadGames() {
-        Task {
-            let games = try await api.games()
-            self.games = games
-            tableView.reloadData()
-        }
+    private func bindToViewModel() {
+        viewModel.$cellModels
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                self.tableView.reloadData()
+            }
+            .store(in: &subscriptions)
     }
-
 }
 
 extension GamesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return games.count
+        return viewModel.cellModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell", for: indexPath) as! GameCell
-        let game = games[indexPath.row]
-        cell.thumbnailImageView.kf.setImage(with: game.thumbnail)
-        cell.platformTagView.text = game.platform
-        cell.genreTagView.text = game.genre
-        cell.titleLabel.text = game.title
-        cell.infoLabel.text = game.shortDescription
+        let cell = tableView.dequeueReusableCell(withIdentifier: GameCell.identifier, for: indexPath) as! GameCell
+        cell.update(
+            with: viewModel.cellModel(for: indexPath.row)
+        )
         return cell
+    }
+}
+
+private extension GamesViewController {
+    static func createTableView() -> UITableView {
+        let tv = UITableView()
+        tv.tableFooterView = UIView()
+        tv.rowHeight = UITableView.automaticDimension
+        tv.separatorStyle = .none
+        tv.register(GameCell.self, forCellReuseIdentifier: GameCell.identifier)
+        return tv
     }
 }

@@ -11,6 +11,8 @@ final class MainCoordinator: BaseCoordinator {
     
     private let navigationController: UINavigationController
     
+    private let api: API = API()
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -24,7 +26,7 @@ final class MainCoordinator: BaseCoordinator {
     }
     
     private func showGamesScreen() {
-        let vc = GamesAssembly.build()
+        let vc = GamesAssembly.build(api: api)
         setRootViewController(vc)
     }
     

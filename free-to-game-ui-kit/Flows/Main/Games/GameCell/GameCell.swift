@@ -5,21 +5,16 @@
 //  Created by Sergey Bendak on 21.06.2022.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 class GameCell: UITableViewCell {
-    let thumbnailImageView: UIImageView = createThumbnailImageView()
-    let platformTagView: TagView = createPlatformTagView()
-    let genreTagView: TagView = createGenreTagView()
-    let titleLabel: UILabel = createTitleLabel()
-    let infoLabel: UILabel = createInfoLabel()
-    
-    private let cardView: CardView = {
-        let сv = CardView()
-        сv.backgroundColor = .white
-        return сv
-    }()
+    private let cardView: CardView = createCardView()
+    private let thumbnailImageView: UIImageView = createThumbnailImageView()
+    private let platformTagView: TagView = createPlatformTagView()
+    private let genreTagView: TagView = createGenreTagView()
+    private let titleLabel: UILabel = createTitleLabel()
+    private let infoLabel: UILabel = createInfoLabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,6 +25,14 @@ class GameCell: UITableViewCell {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func update(with model: GameCellModel) {
+        thumbnailImageView.kf.setImage(with: model.thumbnailUrl)
+        platformTagView.text = model.platform
+        genreTagView.text = model.genre
+        titleLabel.text = model.title
+        infoLabel.text = model.info
     }
     
     private func setupLayout() {
@@ -82,6 +85,12 @@ class GameCell: UITableViewCell {
 }
 
 private extension GameCell {
+    static func createCardView() -> CardView {
+        let сv = CardView()
+        сv.backgroundColor = .white
+        return сv
+    }
+    
     static func createThumbnailImageView() -> UIImageView {
         let iv = UIImageView()
         return iv
@@ -107,10 +116,6 @@ private extension GameCell {
     }
     
     static func createInfoLabel() -> UILabel {
-//        var font = UIFont.systemFont(ofSize: 13)
-//        var ps = NSMutableParagraphStyle()
-//        ps.maximumLineHeight = 4
-//        ps.minimumLineHeight = 4
         let l = UILabel()
         l.font = .systemFont(ofSize: 13)
         l.numberOfLines = 0

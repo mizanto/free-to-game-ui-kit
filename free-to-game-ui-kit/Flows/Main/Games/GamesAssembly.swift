@@ -10,9 +10,11 @@ import UIKit
 
 class GamesAssembly {
 
-    static func build() -> UIViewController {
-        let gamesViewController = GamesViewController()
-        return gamesViewController
+    static func build(api: API) -> UIViewController {
+        let viewModel = GamesViewModel(api: api)
+        let viewController = GamesViewController()
+        viewController.viewModel = viewModel
+        return viewController
     }
     
 }
