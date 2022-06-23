@@ -17,8 +17,11 @@ class GamesViewModel: NSObject {
     }
     
     private let api: API
+    private let onSelect: (Int) -> ()
     
-    private var stateSubject: CurrentValueSubject<State, Never>
+    private var stateSubject = CurrentValueSubject<State, Never>(.empty)
+    private var intentSubject = PassthroughSubject<GamesViewController.Intent, Never>()
+    private var subscriptions = Set<AnyCancellable>()
     
     var statePublisher: AnyPublisher<State, Never> {
         return stateSubject.eraseToAnyPublisher()
@@ -26,12 +29,34 @@ class GamesViewModel: NSObject {
     
     private var models: [ShortGameModel] = []
     
-    init(api: API) {
+    init(api: API, onSelect: @escaping (Int) -> ()) {
         self.api = api
-        self.stateSubject = CurrentValueSubject(.empty)
+        self.onSelect = onSelect
+        super.init()
+        
+        bind()
     }
     
-    func viewDidLoad() {
+    func sendEvent(_ intent: GamesViewController.Intent) {
+        intentSubject.send(intent)
+    }
+    
+    private func bind() {
+        intentSubject
+            .print("ViewModel")
+            .sink { [weak self] intent in
+                guard let self = self else { return }
+                switch intent {
+                case .fetchData:
+                    self.fetchGames()
+                case .selectRow(let row):
+                    self.select(row: row)
+                }
+            }
+            .store(in: &subscriptions)
+    }
+    
+    private func fetchGames() {
         Task {
             do {
                 stateSubject.send(.loading)
@@ -47,6 +72,12 @@ class GamesViewModel: NSObject {
             }
         }
     }
+    
+    private func select(row: Int) {
+        let id = models[row].id
+        onSelect(id)
+    }
+
 }
 
 extension GamesViewModel: UITableViewDataSource {

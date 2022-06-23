@@ -43,7 +43,7 @@ final class ProgressView: StubView {
         }
         
         label.snp.makeConstraints { make in
-            make.top.equalTo(activityIndicator.snp.bottom).offset(8)
+            make.top.equalTo(activityIndicator.snp.bottom).offset(16)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()

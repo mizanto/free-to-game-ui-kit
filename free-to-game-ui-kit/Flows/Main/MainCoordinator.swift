@@ -26,8 +26,18 @@ final class MainCoordinator: BaseCoordinator {
     }
     
     private func showGamesScreen() {
-        let vc = GamesAssembly.build(api: api)
+        let vc = GamesAssembly.build(
+            api: api,
+            onSelect: { [weak self] id in
+                guard let self = self else { return }
+                self.showGameInfo(id: id)
+            }
+        )
         setRootViewController(vc)
+    }
+    
+    private func showGameInfo(id: Int) {
+        print("GAME INFO: \(id)")
     }
     
     private func showEmptyScreen() {

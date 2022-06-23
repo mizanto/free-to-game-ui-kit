@@ -10,9 +10,12 @@ import Kingfisher
 import SnapKit
 import UIKit
 
-
-
 class GamesViewController: UIViewController {
+    
+    enum Intent {
+        case fetchData
+        case selectRow(Int)
+    }
     
     var viewModel: GamesViewModel!
     
@@ -27,8 +30,7 @@ class GamesViewController: UIViewController {
         
         setupLayout()
         bindToViewModel()
-        viewModel.viewDidLoad()
-        showProgressView()
+        viewModel.sendEvent(.fetchData)
     }
     
     private func setupLayout() {
@@ -40,31 +42,32 @@ class GamesViewController: UIViewController {
     
     private func bindToViewModel() {
         viewModel.statePublisher
+            .print("view")
             .receive(on: DispatchQueue.main)
             .sink { state in
-                switch state {
-                case .empty:
-                    print("Empty")
-                    self.showInfoView(text: "No games")
-                case .value(let items):
-                    print("Success: \(items.count) intems(s)")
-                    self.hideAnyStubs()
-                    self.tableView.reloadData()
-                case .loading:
-                    print("Loading")
-                    self.showProgressView(title: "Trying to laod games...")
-                case .error:
-                    self.showErrorView(message: "Something went wrong :c")
-                    print("Error")
-                }
+                self.render(state: state)
             }
             .store(in: &subscriptions)
+    }
+    
+    private func render(state: GamesViewModel.State) {
+        switch state {
+        case .empty:
+            showInfoView(text: "No games")
+        case .value(_):
+            hideAnyStubs()
+            tableView.reloadData()
+        case .loading:
+            showProgressView(title: "Trying to laod games...")
+        case .error:
+            showErrorView(message: "Something went wrong :c")
+        }
     }
 }
 
 extension GamesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("did select at: \(indexPath.row)")
+        viewModel.sendEvent(.selectRow(indexPath.row))
     }
 }
 
