@@ -8,11 +8,18 @@
 import UIKit
 
 class EmptyViewController: UIViewController {
+    
+    private let api = API()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = .cyan
+        
+        Task {
+            let games = try await api.games()
+            print(games)
+        }
     }
 
 }
