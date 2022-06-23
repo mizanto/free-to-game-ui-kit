@@ -10,6 +10,8 @@ import Kingfisher
 import SnapKit
 import UIKit
 
+
+
 class GamesViewController: UIViewController {
     
     var viewModel: GamesViewModel!
@@ -20,12 +22,13 @@ class GamesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.dataSource = viewModel
         tableView.delegate = self
-        tableView.dataSource = self
         
         setupLayout()
         bindToViewModel()
         viewModel.viewDidLoad()
+        showProgressView()
     }
     
     private func setupLayout() {
@@ -36,26 +39,32 @@ class GamesViewController: UIViewController {
     }
     
     private func bindToViewModel() {
-        viewModel.$cellModels
+        viewModel.statePublisher
             .receive(on: DispatchQueue.main)
-            .sink { _ in
-                self.tableView.reloadData()
+            .sink { state in
+                switch state {
+                case .empty:
+                    print("Empty")
+                    self.showInfoView(text: "No games")
+                case .value(let items):
+                    print("Success: \(items.count) intems(s)")
+                    self.hideAnyStubs()
+                    self.tableView.reloadData()
+                case .loading:
+                    print("Loading")
+                    self.showProgressView(title: "Trying to laod games...")
+                case .error:
+                    self.showErrorView(message: "Something went wrong :c")
+                    print("Error")
+                }
             }
             .store(in: &subscriptions)
     }
 }
 
-extension GamesViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.cellModels.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: GameCell.identifier, for: indexPath) as! GameCell
-        cell.update(
-            with: viewModel.cellModel(for: indexPath.row)
-        )
-        return cell
+extension GamesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("did select at: \(indexPath.row)")
     }
 }
 

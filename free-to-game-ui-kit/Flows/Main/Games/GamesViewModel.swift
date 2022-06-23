@@ -6,29 +6,65 @@
 //
 
 import Combine
+import UIKit
 
-class GamesViewModel {
+class GamesViewModel: NSObject {
+    enum State {
+        case value([GameCellModel])
+        case empty
+        case loading
+        case error
+    }
+    
     private let api: API
     
-    @Published var cellModels: [GameCellModel] = []
+    private var stateSubject: CurrentValueSubject<State, Never>
     
-    private var models: [ShortGameModel] = [] {
-        didSet { cellModels = models.map { $0.toGameCellModel() } }
+    var statePublisher: AnyPublisher<State, Never> {
+        return stateSubject.eraseToAnyPublisher()
     }
+    
+    private var models: [ShortGameModel] = []
     
     init(api: API) {
         self.api = api
+        self.stateSubject = CurrentValueSubject(.empty)
     }
     
     func viewDidLoad() {
         Task {
-            let games = try await api.games()
-            self.models = games
+            do {
+                stateSubject.send(.loading)
+                models = try await api.games()
+                if models.isEmpty {
+                    stateSubject.send(.empty)
+                } else {
+                    let cellModels = models.map { $0.toGameCellModel() }
+                    stateSubject.send(.value(cellModels))
+                }
+            } catch {
+                stateSubject.send(.error)
+            }
+        }
+    }
+}
+
+extension GamesViewModel: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if case let State.value(models) = stateSubject.value {
+            return models.count
+        } else {
+            return 0
         }
     }
     
-    func cellModel(for row: Int) -> GameCellModel {
-        assert(row < cellModels.count)
-        return cellModels[row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard case let State.value(models) = stateSubject.value else {
+            return UITableViewCell()
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: GameCell.identifier, for: indexPath) as! GameCell
+        cell.update(with: models[indexPath.row])
+        return cell
     }
 }
