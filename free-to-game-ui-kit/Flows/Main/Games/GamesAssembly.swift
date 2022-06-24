@@ -8,13 +8,11 @@
 import Foundation
 import UIKit
 
-class GamesAssembly {
-
+final class GamesAssembly {
     static func build(api: API, onSelect: @escaping (Int) -> ()) -> UIViewController {
         let viewModel = GamesViewModel(api: api, onSelect: onSelect)
         let viewController = GamesViewController()
         viewController.viewModel = viewModel
         return viewController
     }
-    
 }

@@ -8,9 +8,7 @@
 import UIKit
 
 final class MainCoordinator: BaseCoordinator {
-    
     private let navigationController: UINavigationController
-    
     private let api: API = API()
     
     init(navigationController: UINavigationController) {
@@ -37,7 +35,8 @@ final class MainCoordinator: BaseCoordinator {
     }
     
     private func showGameInfo(id: Int) {
-        print("GAME INFO: \(id)")
+        let viewController = GameInfoAssembly.build(api: api, gameId: id)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     private func showEmptyScreen() {

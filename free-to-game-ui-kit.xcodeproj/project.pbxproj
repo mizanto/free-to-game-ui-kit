@@ -21,6 +21,9 @@
 		AD85659C28647CEC00BA430A /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659B28647CEC00BA430A /* ProgressView.swift */; };
 		AD85659E28647D2C00BA430A /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659D28647D2C00BA430A /* InfoView.swift */; };
 		AD8565A02864802800BA430A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659F2864802800BA430A /* ErrorView.swift */; };
+		AD8565A3286596C600BA430A /* GameInfoAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565A2286596C600BA430A /* GameInfoAssembly.swift */; };
+		AD8565A52865973E00BA430A /* GameInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565A42865973E00BA430A /* GameInfoViewController.swift */; };
+		AD8565A72865975E00BA430A /* GameInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565A62865975E00BA430A /* GameInfoViewModel.swift */; };
 		ADBB60802861B54E003E26A3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB607F2861B54E003E26A3 /* API.swift */; };
 		ADBB60822861B572003E26A3 /* API+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60812861B572003E26A3 /* API+Error.swift */; };
 		ADBB60842861B595003E26A3 /* API+EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60832861B595003E26A3 /* API+EndPoint.swift */; };
@@ -59,6 +62,9 @@
 		AD85659B28647CEC00BA430A /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		AD85659D28647D2C00BA430A /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		AD85659F2864802800BA430A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		AD8565A2286596C600BA430A /* GameInfoAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoAssembly.swift; sourceTree = "<group>"; };
+		AD8565A42865973E00BA430A /* GameInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoViewController.swift; sourceTree = "<group>"; };
+		AD8565A62865975E00BA430A /* GameInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoViewModel.swift; sourceTree = "<group>"; };
 		ADBB607F2861B54E003E26A3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ADBB60812861B572003E26A3 /* API+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Error.swift"; sourceTree = "<group>"; };
 		ADBB60832861B595003E26A3 /* API+EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+EndPoint.swift"; sourceTree = "<group>"; };
@@ -149,6 +155,16 @@
 				AD85659F2864802800BA430A /* ErrorView.swift */,
 			);
 			path = Stubs;
+			sourceTree = "<group>";
+		};
+		AD8565A12864C6B000BA430A /* GameInfo */ = {
+			isa = PBXGroup;
+			children = (
+				AD8565A2286596C600BA430A /* GameInfoAssembly.swift */,
+				AD8565A42865973E00BA430A /* GameInfoViewController.swift */,
+				AD8565A62865975E00BA430A /* GameInfoViewModel.swift */,
+			);
+			path = GameInfo;
 			sourceTree = "<group>";
 		};
 		ADBB607E2861B52E003E26A3 /* API */ = {
@@ -251,6 +267,7 @@
 			children = (
 				ADBEB65528608695008D44B4 /* MainCoordinator.swift */,
 				ADBB608E286216ED003E26A3 /* Games */,
+				AD8565A12864C6B000BA430A /* GameInfo */,
 				ADBEB657286086DC008D44B4 /* EmptyScreen */,
 			);
 			path = Main;
@@ -396,6 +413,7 @@
 				AD85659E28647D2C00BA430A /* InfoView.swift in Sources */,
 				ADBEB64E28608603008D44B4 /* Coordinator.swift in Sources */,
 				ADBEB63C286085A8008D44B4 /* EmptyViewController.swift in Sources */,
+				AD8565A72865975E00BA430A /* GameInfoViewModel.swift in Sources */,
 				AD85658B2863312900BA430A /* CardView.swift in Sources */,
 				ADBEB638286085A8008D44B4 /* AppDelegate.swift in Sources */,
 				ADBEB63A286085A8008D44B4 /* SceneDelegate.swift in Sources */,
@@ -407,6 +425,7 @@
 				AD85659528636D0900BA430A /* StringIdentifiable.swift in Sources */,
 				AD8565832862295400BA430A /* GameCell.swift in Sources */,
 				AD856586286229A000BA430A /* UIView+Extension.swift in Sources */,
+				AD8565A3286596C600BA430A /* GameInfoAssembly.swift in Sources */,
 				AD856590286366E200BA430A /* GamesViewModel.swift in Sources */,
 				ADBB609228621E08003E26A3 /* GamesAssembly.swift in Sources */,
 				ADBEB65928608700008D44B4 /* EmptyViewControllerAssembly.swift in Sources */,
@@ -414,6 +433,7 @@
 				AD85659A28647CD300BA430A /* StubView.swift in Sources */,
 				AD8565A02864802800BA430A /* ErrorView.swift in Sources */,
 				ADBB60872861B5C8003E26A3 /* ShortGameModel.swift in Sources */,
+				AD8565A52865973E00BA430A /* GameInfoViewController.swift in Sources */,
 				AD85659C28647CEC00BA430A /* ProgressView.swift in Sources */,
 				ADBEB65028608620008D44B4 /* CoordinatorFactory.swift in Sources */,
 				ADBB60892861B5E1003E26A3 /* ExtendedGameModel.swift in Sources */,

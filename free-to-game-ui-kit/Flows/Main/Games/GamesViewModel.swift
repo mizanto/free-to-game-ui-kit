@@ -8,7 +8,7 @@
 import Combine
 import UIKit
 
-class GamesViewModel: NSObject {
+final class GamesViewModel: NSObject {
     enum State {
         case value([GameCellModel])
         case empty

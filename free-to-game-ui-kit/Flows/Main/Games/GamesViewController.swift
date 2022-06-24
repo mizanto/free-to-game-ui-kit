@@ -10,7 +10,7 @@ import Kingfisher
 import SnapKit
 import UIKit
 
-class GamesViewController: UIViewController {
+final class GamesViewController: UIViewController {
     
     enum Intent {
         case fetchData
