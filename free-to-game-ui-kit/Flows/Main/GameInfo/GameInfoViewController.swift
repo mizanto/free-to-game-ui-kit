@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Kingfisher
 import UIKit
 
 final class GameInfoViewController: UIViewController {
@@ -14,6 +15,9 @@ final class GameInfoViewController: UIViewController {
     }
     
     var viewModel: GameInfoViewModel!
+    
+    private let scrollView: UIScrollView = UIScrollView(showsHorizontalIndicator: false)
+    private let infoView: GameInfoView = GameInfoView()
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -26,7 +30,19 @@ final class GameInfoViewController: UIViewController {
     }
     
     private func setupLayout() {
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(infoView)
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        infoView.snp.makeConstraints { make in
+            make.top.left.equalToSuperview().offset(20)
+            make.right.bottom.equalToSuperview().offset(-20)
+            make.width.equalTo(scrollView.snp.width).offset(-40)
+        }
     }
     
     private func bindToViewModel() {
@@ -41,17 +57,20 @@ final class GameInfoViewController: UIViewController {
     
     private func render(state: GameInfoViewModel.State) {
         switch state {
-        case .value(_):
+        case .value(let infoModel):
+            infoView.isHidden = false
             hideAnyStubs()
-            showInfoView()
+            showInfoView(from: infoModel)
         case .loading:
+            infoView.isHidden = true
             showProgressView(title: "Trying to laod game info...")
         case .error:
+            infoView.isHidden = true
             showErrorView(message: "Something went wrong :c")
         }
     }
     
-    private func showInfoView() {
-        
+    private func showInfoView(from model: GameInfoModel) {
+        infoView.update(with: model)
     }
 }

@@ -14,10 +14,11 @@ class TagView: UIView {
     }
     
     var color: UIColor? {
-        didSet {
-            backgroundColor = color?.withAlphaComponent(0.15)
-            label.textColor = color
+        set {
+            backgroundColor = newValue?.withAlphaComponent(0.15)
+            label.textColor = newValue
         }
+        get { return label.textColor}
     }
     
     private let label: UILabel = {
@@ -25,6 +26,11 @@ class TagView: UIView {
         l.font = .systemFont(ofSize: 15, weight: .bold)
         return l
     }()
+    
+    convenience init(color: UIColor) {
+        self.init(frame: .zero)
+        self.color = color
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

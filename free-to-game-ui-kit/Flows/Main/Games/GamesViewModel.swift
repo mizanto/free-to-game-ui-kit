@@ -17,7 +17,7 @@ final class GamesViewModel: NSObject {
     }
     
     private let api: API
-    private let onSelect: (Int) -> ()
+    private let onSelect: (String, Int) -> ()
     
     private var stateSubject = CurrentValueSubject<State, Never>(.empty)
     private var intentSubject = PassthroughSubject<GamesViewController.Intent, Never>()
@@ -29,7 +29,7 @@ final class GamesViewModel: NSObject {
     
     private var models: [ShortGameModel] = []
     
-    init(api: API, onSelect: @escaping (Int) -> ()) {
+    init(api: API, onSelect: @escaping (String, Int) -> ()) {
         self.api = api
         self.onSelect = onSelect
         super.init()
@@ -68,14 +68,16 @@ final class GamesViewModel: NSObject {
                     stateSubject.send(.value(cellModels))
                 }
             } catch {
+                print(error)
                 stateSubject.send(.error)
             }
         }
     }
     
     private func select(row: Int) {
+        let title = models[row].title
         let id = models[row].id
-        onSelect(id)
+        onSelect(title, id)
     }
 
 }

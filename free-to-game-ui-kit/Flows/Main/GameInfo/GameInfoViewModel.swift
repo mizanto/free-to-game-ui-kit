@@ -10,7 +10,7 @@ import Combine
 
 final class GameInfoViewModel {
     enum State {
-        case value(ExtendedGameModel)
+        case value(GameInfoModel)
         case loading
         case error
     }
@@ -57,7 +57,7 @@ final class GameInfoViewModel {
                 self.stateSubject.send(.loading)
                 self.model = try await self.api.game(by: gameId)
                 if let model = self.model {
-                    self.stateSubject.send(.value(model))
+                    self.stateSubject.send(.value(buildGameInfoModel(from: model)))
                 } else {
                     self.stateSubject.send(.error)
                 }
@@ -65,5 +65,31 @@ final class GameInfoViewModel {
                 self.stateSubject.send(.error)
             }
         }
+    }
+    
+    private func buildGameInfoModel(from model: ExtendedGameModel) -> GameInfoModel {
+        var requirementsInfos: [TitledInfo] = []
+        if let requirements = model.systemRequirements {
+            requirementsInfos = [
+                TitledInfo(title: "OS", info: requirements.os),
+                TitledInfo(title: "CPU", info: requirements.processor),
+                TitledInfo(title: "RAM", info: requirements.memory),
+                TitledInfo(title: "GPU", info: requirements.graphics),
+                TitledInfo(title: "HDD", info: requirements.storage)
+            ]
+        }
+        return GameInfoModel(
+            thumbnailUrl: model.thumbnail,
+            platform: model.platform,
+            genre: model.genre,
+            requirements: requirementsInfos,
+            aboutText: model.fullDescription.trimmingCharacters(in: .newlines),
+            additionInfo: [
+                TitledInfo(title: "Developer", info: model.developer),
+                TitledInfo(title: "Publisher", info: model.publisher),
+                TitledInfo(title: "Release Date", info: model.releaseDate)
+            ],
+            screenshotsUrls: []
+        )
     }
 }

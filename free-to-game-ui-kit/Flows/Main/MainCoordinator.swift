@@ -26,16 +26,16 @@ final class MainCoordinator: BaseCoordinator {
     private func showGamesScreen() {
         let vc = GamesAssembly.build(
             api: api,
-            onSelect: { [weak self] id in
+            onSelect: { [weak self] title, id  in
                 guard let self = self else { return }
-                self.showGameInfo(id: id)
+                self.showGameInfo(title: title, id: id)
             }
         )
         setRootViewController(vc)
     }
     
-    private func showGameInfo(id: Int) {
-        let viewController = GameInfoAssembly.build(api: api, gameId: id)
+    private func showGameInfo(title: String?, id: Int) {
+        let viewController = GameInfoAssembly.build(title: title, gameId: id, api: api)
         navigationController.pushViewController(viewController, animated: true)
     }
     

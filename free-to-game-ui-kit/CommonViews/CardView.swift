@@ -30,7 +30,8 @@ class CardView: UIView {
         setupContentView()
     }
     
-    private func setupLayout() {
+    func setupLayout() {
+        contentView.backgroundColor = .white
         addSubview(contentView)
         contentView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
