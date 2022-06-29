@@ -11,6 +11,7 @@ import Combine
 final class GameInfoViewModel {
     private let api: API
     private let gameId: Int
+    private let onShowWeb: (URL) -> ()
     
     private var model: ExtendedGameModel?
     private var subscriptions = Set<AnyCancellable>()
@@ -21,9 +22,10 @@ final class GameInfoViewModel {
         return stateSubject.eraseToAnyPublisher()
     }
 
-    init(api: API, gameId: Int) {
+    init(api: API, gameId: Int, onShowWeb: @escaping (URL) -> ()) {
         self.api = api
         self.gameId = gameId
+        self.onShowWeb = onShowWeb
         
         bind()
     }
@@ -40,6 +42,8 @@ final class GameInfoViewModel {
                 switch intent {
                 case .fetchData:
                     self.fetchInfo()
+                case .playNowPressed:
+                    self.shwoWebSite()
                 }
             }
             .store(in: &subscriptions)
@@ -59,6 +63,13 @@ final class GameInfoViewModel {
                 self.stateSubject.send(.error)
             }
         }
+    }
+    
+    private func shwoWebSite() {
+        guard let model = model else {
+            return
+        }
+        onShowWeb(model.url)
     }
     
     private func buildGameInfoModel(from model: ExtendedGameModel) -> GameInfoModel {

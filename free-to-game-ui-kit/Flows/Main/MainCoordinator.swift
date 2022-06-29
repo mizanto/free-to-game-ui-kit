@@ -35,7 +35,19 @@ final class MainCoordinator: BaseCoordinator {
     }
     
     private func showGameInfo(title: String?, id: Int) {
-        let viewController = GameInfoAssembly.build(title: title, gameId: id, api: api)
+        let viewController = GameInfoAssembly.build(
+            title: title,
+            gameId: id, api: api,
+            onShowWeb: { [weak self] url in
+                guard let self = self else { return }
+                self.showWebInfo(url: url)
+            }
+        )
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    private func showWebInfo(url: URL) {
+        let viewController = WebViewAssembly.build(url: url)
         navigationController.pushViewController(viewController, animated: true)
     }
     

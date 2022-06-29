@@ -27,7 +27,7 @@ final class InfoView: StubView {
     
     override func setupLayout() {
         super.setupLayout()
-
+        backgroundColor = .white
         container.addSubviews(label)
         
         label.snp.makeConstraints { make in

@@ -14,6 +14,8 @@ final class GameInfoViewController: UIViewController {
     
     private let scrollView: UIScrollView = UIScrollView(showsHorizontalIndicator: false)
     private let infoView: GameInfoView = GameInfoView()
+    private let buttonContainer: ShadowView = ShadowView(shadowOffset: CGSize(width: 0, height: 4), shadowRadius: 16, shadowOpacity: 0.25)
+    private let playNowButton: UIButton = RoundedButton(title: "Play now!", backgroundColor: UIColor(hex: "#5D5FEF")!, cornerRadius: 8)
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -22,23 +24,45 @@ final class GameInfoViewController: UIViewController {
         
         setupLayout()
         bindToViewModel()
+        
+        playNowButton.addTarget(self, action: #selector(onPlayNowButtonPress(sender:)), for: .touchUpInside)
+        
         viewModel.sendEvent(.fetchData)
     }
     
     private func setupLayout() {
         view.backgroundColor = .white
+        buttonContainer.backgroundColor = .white
         
-        view.addSubview(scrollView)
+        view.addSubviews(scrollView, buttonContainer)
         scrollView.addSubview(infoView)
         
+        buttonContainer.addSubview(playNowButton)
+        
         scrollView.snp.makeConstraints { make in
-            make.top.left.right.bottom.equalToSuperview()
+            make.top.left.right.equalToSuperview()
         }
         infoView.snp.makeConstraints { make in
             make.top.left.equalToSuperview().offset(16)
             make.right.bottom.equalToSuperview().offset(-16)
             make.width.equalTo(scrollView.snp.width).offset(-32)
         }
+        buttonContainer.snp.makeConstraints { make in
+            make.height.equalTo(84)
+            make.top.equalTo(scrollView.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+        }
+        playNowButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(48)
+        }
+    }
+    
+    @objc
+    func onPlayNowButtonPress(sender: UIButton?) {
+        viewModel.sendEvent(.playNowPressed)
     }
     
     private func bindToViewModel() {
