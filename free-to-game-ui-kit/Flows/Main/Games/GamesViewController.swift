@@ -11,12 +11,6 @@ import SnapKit
 import UIKit
 
 final class GamesViewController: UIViewController {
-    
-    enum Intent {
-        case fetchData
-        case selectRow(Int)
-    }
-    
     var viewModel: GamesViewModel!
     
     private var tableView: UITableView = GamesViewController.createTableView()
@@ -50,7 +44,7 @@ final class GamesViewController: UIViewController {
             .store(in: &subscriptions)
     }
     
-    private func render(state: GamesViewModel.State) {
+    private func render(state: Games.State) {
         switch state {
         case .empty:
             showInfoView(text: "No games")

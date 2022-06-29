@@ -10,10 +10,6 @@ import Kingfisher
 import UIKit
 
 final class GameInfoViewController: UIViewController {
-    enum Intent {
-        case fetchData
-    }
-    
     var viewModel: GameInfoViewModel!
     
     private let scrollView: UIScrollView = UIScrollView(showsHorizontalIndicator: false)
@@ -39,9 +35,9 @@ final class GameInfoViewController: UIViewController {
             make.top.left.right.bottom.equalToSuperview()
         }
         infoView.snp.makeConstraints { make in
-            make.top.left.equalToSuperview().offset(20)
-            make.right.bottom.equalToSuperview().offset(-20)
-            make.width.equalTo(scrollView.snp.width).offset(-40)
+            make.top.left.equalToSuperview().offset(16)
+            make.right.bottom.equalToSuperview().offset(-16)
+            make.width.equalTo(scrollView.snp.width).offset(-32)
         }
     }
     
@@ -55,7 +51,7 @@ final class GameInfoViewController: UIViewController {
             .store(in: &subscriptions)
     }
     
-    private func render(state: GameInfoViewModel.State) {
+    private func render(state: GameInfo.State) {
         switch state {
         case .value(let infoModel):
             infoView.isHidden = false

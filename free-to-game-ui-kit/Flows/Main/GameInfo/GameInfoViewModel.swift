@@ -9,21 +9,15 @@ import Foundation
 import Combine
 
 final class GameInfoViewModel {
-    enum State {
-        case value(GameInfoModel)
-        case loading
-        case error
-    }
-    
     private let api: API
     private let gameId: Int
     
     private var model: ExtendedGameModel?
     private var subscriptions = Set<AnyCancellable>()
-    private var intentSubject = PassthroughSubject<GameInfoViewController.Intent, Never>()
-    private var stateSubject = CurrentValueSubject<State, Never>(.loading)
+    private var intentSubject = PassthroughSubject<GameInfo.Intent, Never>()
+    private var stateSubject = CurrentValueSubject<GameInfo.State, Never>(.loading)
     
-    var statePublisher: AnyPublisher<State, Never> {
+    var statePublisher: AnyPublisher<GameInfo.State, Never> {
         return stateSubject.eraseToAnyPublisher()
     }
 
@@ -34,7 +28,7 @@ final class GameInfoViewModel {
         bind()
     }
     
-    func sendEvent(_ intent: GameInfoViewController.Intent) {
+    func sendEvent(_ intent: GameInfo.Intent) {
         intentSubject.send(intent)
     }
     
@@ -89,7 +83,7 @@ final class GameInfoViewModel {
                 TitledInfo(title: "Publisher", info: model.publisher),
                 TitledInfo(title: "Release Date", info: model.releaseDate)
             ],
-            screenshotsUrls: []
+            screenshotsUrls: model.screenshots.map { $0.url }
         )
     }
 }

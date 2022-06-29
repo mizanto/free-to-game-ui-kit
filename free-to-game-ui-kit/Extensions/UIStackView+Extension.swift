@@ -31,12 +31,21 @@ extension UIStackView {
         addArrangedSubviews(views)
     }
     
+    func setViews(_ views: [UIView]) {
+        removeAllArrangedSubviews()
+        addArrangedSubviews(views)
+    }
+    
     func setView(_ view: UIView) {
         removeAllArrangedSubviews()
         addArrangedSubview(view)
     }
     
     func addViews(_ views: UIView...) {
+        addArrangedSubviews(views)
+    }
+    
+    func addViews(_ views: [UIView]) {
         addArrangedSubviews(views)
     }
     

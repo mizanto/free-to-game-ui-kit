@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class GameInfoView: CardView {
     private let vStack: VStackView = VStackView(alignment: .leading, spacing: 12)
@@ -17,6 +18,7 @@ final class GameInfoView: CardView {
     private let requirementsView: TextInfoBlockView = TextInfoBlockView(headerTitle: "System Requirements")
     private let aboutTextLabel: UILabel = UILabel(font: .systemFont(ofSize: 15, weight: .regular), numberOfLines: 0)
     private let additionalnfoView: TextInfoBlockView = TextInfoBlockView(headerTitle: "Additional Information")
+    private let screenshotsView: ImageCarouselView = ImageCarouselView(title: "Screenshots")
     
     func update(with model: GameInfoModel) {
         thumbnailImageView.kf.setImage(with: model.thumbnailUrl)
@@ -38,6 +40,14 @@ final class GameInfoView: CardView {
         if !model.additionInfo.isEmpty {
             additionalnfoView.setTiteledInfos(infos: model.additionInfo)
             vStack.addView(additionalnfoView)
+        }
+        
+        if !model.screenshotsUrls.isEmpty {
+            vStack.addView(screenshotsView)
+            screenshotsView.snp.makeConstraints { make in
+                make.width.equalTo(vStack.snp.width)
+            }
+            screenshotsView.setContentOf(urls: model.screenshotsUrls, itemSize: .init(width: 130, height: 80))
         }
     }
     

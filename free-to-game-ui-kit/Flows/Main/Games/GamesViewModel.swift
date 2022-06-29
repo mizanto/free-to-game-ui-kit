@@ -9,21 +9,14 @@ import Combine
 import UIKit
 
 final class GamesViewModel: NSObject {
-    enum State {
-        case value([GameCellModel])
-        case empty
-        case loading
-        case error
-    }
-    
     private let api: API
     private let onSelect: (String, Int) -> ()
     
-    private var stateSubject = CurrentValueSubject<State, Never>(.empty)
-    private var intentSubject = PassthroughSubject<GamesViewController.Intent, Never>()
+    private var stateSubject = CurrentValueSubject<Games.State, Never>(.empty)
+    private var intentSubject = PassthroughSubject<Games.Intent, Never>()
     private var subscriptions = Set<AnyCancellable>()
     
-    var statePublisher: AnyPublisher<State, Never> {
+    var statePublisher: AnyPublisher<Games.State, Never> {
         return stateSubject.eraseToAnyPublisher()
     }
     
@@ -37,7 +30,7 @@ final class GamesViewModel: NSObject {
         bind()
     }
     
-    func sendEvent(_ intent: GamesViewController.Intent) {
+    func sendEvent(_ intent: Games.Intent) {
         intentSubject.send(intent)
     }
     
@@ -84,7 +77,7 @@ final class GamesViewModel: NSObject {
 
 extension GamesViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if case let State.value(models) = stateSubject.value {
+        if case let Games.State.value(models) = stateSubject.value {
             return models.count
         } else {
             return 0
@@ -92,7 +85,7 @@ extension GamesViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard case let State.value(models) = stateSubject.value else {
+        guard case let Games.State.value(models) = stateSubject.value else {
             return UITableViewCell()
         }
         

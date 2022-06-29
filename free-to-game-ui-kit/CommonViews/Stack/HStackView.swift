@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HStackView: UIStackView {
+class HStackView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         axis = .horizontal
