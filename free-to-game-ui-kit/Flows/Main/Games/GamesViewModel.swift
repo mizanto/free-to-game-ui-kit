@@ -8,28 +8,23 @@
 import Combine
 import UIKit
 
-class GamesViewModel: NSObject {
-    enum State {
-        case value([GameCellModel])
-        case empty
-        case loading
-        case error
-    }
-    
+final class GamesViewModel: NSObject {
     private let api: API
-    private let onSelect: (Int) -> ()
+    private let onSelect: (String, Int) -> ()
     
-    private var stateSubject = CurrentValueSubject<State, Never>(.empty)
-    private var intentSubject = PassthroughSubject<GamesViewController.Intent, Never>()
+    private var stateSubject = CurrentValueSubject<Games.State, Never>(.empty(NSLocalizedString("games.empty.title", comment: "")))
+    private var intentSubject = PassthroughSubject<Games.Intent, Never>()
     private var subscriptions = Set<AnyCancellable>()
     
-    var statePublisher: AnyPublisher<State, Never> {
+    var title: String? = NSLocalizedString("games.title", comment: "")
+    
+    var statePublisher: AnyPublisher<Games.State, Never> {
         return stateSubject.eraseToAnyPublisher()
     }
     
     private var models: [ShortGameModel] = []
     
-    init(api: API, onSelect: @escaping (Int) -> ()) {
+    init(api: API, onSelect: @escaping (String, Int) -> ()) {
         self.api = api
         self.onSelect = onSelect
         super.init()
@@ -37,7 +32,7 @@ class GamesViewModel: NSObject {
         bind()
     }
     
-    func sendEvent(_ intent: GamesViewController.Intent) {
+    func sendEvent(_ intent: Games.Intent) {
         intentSubject.send(intent)
     }
     
@@ -59,30 +54,32 @@ class GamesViewModel: NSObject {
     private func fetchGames() {
         Task {
             do {
-                stateSubject.send(.loading)
+                stateSubject.send(.loading(NSLocalizedString("games.loading.title", comment: "")))
                 models = try await api.games()
                 if models.isEmpty {
-                    stateSubject.send(.empty)
+                    stateSubject.send(.empty(NSLocalizedString("games.empty.title", comment: "")))
                 } else {
                     let cellModels = models.map { $0.toGameCellModel() }
                     stateSubject.send(.value(cellModels))
                 }
             } catch {
-                stateSubject.send(.error)
+                print(error)
+                stateSubject.send(.error(NSLocalizedString("games.error.title", comment: "")))
             }
         }
     }
     
     private func select(row: Int) {
+        let title = models[row].title
         let id = models[row].id
-        onSelect(id)
+        onSelect(title, id)
     }
 
 }
 
 extension GamesViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if case let State.value(models) = stateSubject.value {
+        if case let Games.State.value(models) = stateSubject.value {
             return models.count
         } else {
             return 0
@@ -90,7 +87,7 @@ extension GamesViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard case let State.value(models) = stateSubject.value else {
+        guard case let Games.State.value(models) = stateSubject.value else {
             return UITableViewCell()
         }
         

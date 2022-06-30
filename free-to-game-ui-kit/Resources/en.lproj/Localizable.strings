@@ -1,0 +1,35 @@
+/* 
+  Localizable.strings
+  free-to-game-ui-kit
+
+  Created by Sergey Bendak on 30.06.2022.
+  
+*/
+
+// games list
+
+"games.title" = "Games";
+"games.empty.title" = "No games";
+"games.loading.title" = "Trying to laod games...";
+"games.error.title" = "Something went wrong :c";
+
+// game info
+
+"game_info.loading.title" = "Trying to laod game info...";
+"game_info.error.message" = "Something went wrong :c";
+
+"game_info.action_button" = "Play now!";
+
+"game_info.requirement.title" = "System Requirements";
+"game_info.requirement.os" = "OS";
+"game_info.requirement.cpu" = "CPU";
+"game_info.requirement.ram" = "RAM";
+"game_info.requirement.gpu" = "GPU";
+"game_info.requirement.hdd" = "HDD";
+
+"game_info.additional.title" = "Additional Information";
+"game_info.additional.developer" = "Developer";
+"game_info.additional.publisher" = "Publisher";
+"game_info.additional.release_date" = "Release date";
+
+"game_info.screenshots.title" = "Screenshots";

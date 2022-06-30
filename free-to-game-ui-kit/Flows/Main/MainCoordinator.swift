@@ -8,9 +8,7 @@
 import UIKit
 
 final class MainCoordinator: BaseCoordinator {
-    
     private let navigationController: UINavigationController
-    
     private let api: API = API()
     
     init(navigationController: UINavigationController) {
@@ -28,16 +26,29 @@ final class MainCoordinator: BaseCoordinator {
     private func showGamesScreen() {
         let vc = GamesAssembly.build(
             api: api,
-            onSelect: { [weak self] id in
+            onSelect: { [weak self] title, id  in
                 guard let self = self else { return }
-                self.showGameInfo(id: id)
+                self.showGameInfo(title: title, id: id)
             }
         )
         setRootViewController(vc)
     }
     
-    private func showGameInfo(id: Int) {
-        print("GAME INFO: \(id)")
+    private func showGameInfo(title: String?, id: Int) {
+        let viewController = GameInfoAssembly.build(
+            title: title,
+            gameId: id, api: api,
+            onShowWeb: { [weak self] url in
+                guard let self = self else { return }
+                self.showWebInfo(url: url)
+            }
+        )
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    private func showWebInfo(url: URL) {
+        let viewController = WebViewAssembly.build(url: url)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     private func showEmptyScreen() {

@@ -35,6 +35,7 @@ final class ProgressView: StubView {
     
     override func setupLayout() {
         super.setupLayout()
+        backgroundColor = .white
         container.addSubviews(activityIndicator, label)
         
         activityIndicator.snp.makeConstraints { make in

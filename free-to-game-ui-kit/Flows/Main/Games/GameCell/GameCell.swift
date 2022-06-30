@@ -65,7 +65,7 @@ class GameCell: UITableViewCell {
         }
         
         genreTagView.snp.makeConstraints { make in
-            make.left.equalTo(platformTagView.snp.right).offset(16)
+            make.left.equalTo(platformTagView.snp.right).offset(8)
             make.centerY.equalTo(platformTagView.snp.centerY)
         }
         

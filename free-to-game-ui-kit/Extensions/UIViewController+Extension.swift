@@ -45,16 +45,16 @@ extension UIViewController {
     
     // MARK: - InfoView
     
-    func showInfoView(text: String = "Info View") {
+    func showInfoView(title: String = "Info View") {
         hideProgressView()
         hideErrorView()
         
         if let infoView = view.subviews.first(where: { $0 is InfoView }) as? InfoView {
             view.bringSubviewToFront(infoView)
-            infoView.text = text
+            infoView.text = title
         } else {
             let infoView = InfoView()
-            infoView.text = text
+            infoView.text = title
             view.addSubview(infoView)
             infoView.snp.makeConstraints { make in
                 make.edges.equalToSuperview()
