@@ -69,7 +69,8 @@ final class GameInfoViewController: UIViewController {
         viewModel.statePublisher
             .print("view")
             .receive(on: DispatchQueue.main)
-            .sink { state in
+            .sink { [weak self] state in
+                guard let self = self else { return }
                 self.render(state: state)
             }
             .store(in: &subscriptions)
