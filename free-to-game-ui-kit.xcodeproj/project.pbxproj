@@ -43,6 +43,7 @@
 		AD8565CB286C4CC200BA430A /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565CA286C4CC200BA430A /* ShadowView.swift */; };
 		AD8565CE286C52C200BA430A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565CD286C52C200BA430A /* WebViewController.swift */; };
 		AD8565D0286C56F400BA430A /* WebViewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565CF286C56F400BA430A /* WebViewAssembly.swift */; };
+		AD8565D3286D843700BA430A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD8565D5286D843700BA430A /* Localizable.strings */; };
 		ADBB60802861B54E003E26A3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB607F2861B54E003E26A3 /* API.swift */; };
 		ADBB60822861B572003E26A3 /* API+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60812861B572003E26A3 /* API+Error.swift */; };
 		ADBB60842861B595003E26A3 /* API+EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60832861B595003E26A3 /* API+EndPoint.swift */; };
@@ -103,6 +104,7 @@
 		AD8565CA286C4CC200BA430A /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		AD8565CD286C52C200BA430A /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AD8565CF286C56F400BA430A /* WebViewAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewAssembly.swift; sourceTree = "<group>"; };
+		AD8565D4286D843700BA430A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADBB607F2861B54E003E26A3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ADBB60812861B572003E26A3 /* API+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Error.swift"; sourceTree = "<group>"; };
 		ADBB60832861B595003E26A3 /* API+EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+EndPoint.swift"; sourceTree = "<group>"; };
@@ -209,11 +211,10 @@
 		AD8565A12864C6B000BA430A /* GameInfo */ = {
 			isa = PBXGroup;
 			children = (
+				AD8565D8286D964C00BA430A /* InfoView */,
 				AD8565A2286596C600BA430A /* GameInfoAssembly.swift */,
 				AD8565A42865973E00BA430A /* GameInfoViewController.swift */,
 				AD8565A62865975E00BA430A /* GameInfoViewModel.swift */,
-				AD8565B628688E3900BA430A /* GameInfoView.swift */,
-				AD8565B8286AE3AC00BA430A /* GameInfoModel.swift */,
 				AD8565BE286C3B9A00BA430A /* GameInfo.swift */,
 			);
 			path = GameInfo;
@@ -244,6 +245,26 @@
 				AD8565CD286C52C200BA430A /* WebViewController.swift */,
 			);
 			path = Web;
+			sourceTree = "<group>";
+		};
+		AD8565D7286D90E600BA430A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ADBEB645286085A9008D44B4 /* Info.plist */,
+				ADBEB642286085A9008D44B4 /* LaunchScreen.storyboard */,
+				AD8565D5286D843700BA430A /* Localizable.strings */,
+				ADBEB640286085A9008D44B4 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AD8565D8286D964C00BA430A /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				AD8565B628688E3900BA430A /* GameInfoView.swift */,
+				AD8565B8286AE3AC00BA430A /* GameInfoModel.swift */,
+			);
+			path = InfoView;
 			sourceTree = "<group>";
 		};
 		ADBB607E2861B52E003E26A3 /* API */ = {
@@ -300,16 +321,14 @@
 		ADBEB636286085A8008D44B4 /* free-to-game-ui-kit */ = {
 			isa = PBXGroup;
 			children = (
-				AD85659328636C4700BA430A /* Helpers */,
-				AD856587286330AE00BA430A /* CommonViews */,
-				AD8565842862298500BA430A /* Extensions */,
-				ADBB60852861B5A8003E26A3 /* RawModels */,
-				ADBB607E2861B52E003E26A3 /* API */,
 				ADBEB64B286085BC008D44B4 /* Application */,
 				ADBEB65328608672008D44B4 /* Flows */,
-				ADBEB640286085A9008D44B4 /* Assets.xcassets */,
-				ADBEB642286085A9008D44B4 /* LaunchScreen.storyboard */,
-				ADBEB645286085A9008D44B4 /* Info.plist */,
+				ADBB607E2861B52E003E26A3 /* API */,
+				ADBB60852861B5A8003E26A3 /* RawModels */,
+				AD856587286330AE00BA430A /* CommonViews */,
+				AD85659328636C4700BA430A /* Helpers */,
+				AD8565842862298500BA430A /* Extensions */,
+				AD8565D7286D90E600BA430A /* Resources */,
 			);
 			path = "free-to-game-ui-kit";
 			sourceTree = "<group>";
@@ -432,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADBEB644286085A9008D44B4 /* LaunchScreen.storyboard in Resources */,
+				AD8565D3286D843700BA430A /* Localizable.strings in Resources */,
 				ADBEB641286085A9008D44B4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,6 +563,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		AD8565D5286D843700BA430A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD8565D4286D843700BA430A /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		ADBEB642286085A9008D44B4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -558,6 +586,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -604,6 +633,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -618,6 +648,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -658,6 +689,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -678,7 +710,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UER9S2EB72;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "free-to-game-ui-kit/Info.plist";
+				INFOPLIST_FILE = "free-to-game-ui-kit/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -706,7 +738,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UER9S2EB72;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "free-to-game-ui-kit/Info.plist";
+				INFOPLIST_FILE = "free-to-game-ui-kit/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

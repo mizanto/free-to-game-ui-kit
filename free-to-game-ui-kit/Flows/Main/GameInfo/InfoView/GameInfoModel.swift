@@ -13,6 +13,6 @@ struct GameInfoModel {
     let genre: String
     let requirements: [TitledInfo]
     let aboutText: String
-    let additionInfo: [TitledInfo]
+    let additionalInfo: [TitledInfo]
     let screenshotsUrls: [URL]
 }

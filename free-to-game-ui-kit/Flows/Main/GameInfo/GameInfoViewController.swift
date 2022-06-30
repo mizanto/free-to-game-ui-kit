@@ -12,47 +12,71 @@ import UIKit
 final class GameInfoViewController: UIViewController {
     var viewModel: GameInfoViewModel!
     
-    private let scrollView: UIScrollView = UIScrollView(showsHorizontalIndicator: false)
-    private let infoView: GameInfoView = GameInfoView()
-    private let buttonContainer: ShadowView = ShadowView(shadowOffset: CGSize(width: 0, height: 4), shadowRadius: 16, shadowOpacity: 0.25)
-    private let playNowButton: UIButton = RoundedButton(title: "Play now!", backgroundColor: UIColor(hex: "#5D5FEF")!, cornerRadius: 8)
+    private var scrollView: UIScrollView!
+    private var infoView: GameInfoView!
+    private var buttonContainer: ShadowView!
+    private var actionButton: UIButton!
     
     private var subscriptions = Set<AnyCancellable>()
+    
+    override func loadView() {
+        super.loadView()
+        scrollView = UIScrollView(showsHorizontalIndicator: false)
+        
+        infoView = GameInfoView(
+            requirementsTitle: viewModel.requirementsTitle,
+            additionalInfoTitle: viewModel.additionalInfoTitle,
+            screenshotsTitle: viewModel.screenshotsTitle
+        )
+        
+        buttonContainer = ShadowView(
+            shadowOffset: CGSize(width: 0, height: 4),
+            shadowRadius: 16,
+            shadowOpacity: 0.25
+        )
+        
+        actionButton = RoundedButton(
+            title: viewModel.actionButtonTitle,
+            backgroundColor: UIColor(hex: "#5D5FEF")!,
+            cornerRadius: 8
+        )
+        actionButton.addTarget(self, action: #selector(onPlayNowButtonPress(sender:)), for: .touchUpInside)
+        
+        view.addSubviews(scrollView, buttonContainer)
+        scrollView.addSubview(infoView)
+        buttonContainer.addSubview(actionButton)
+        
+        view.backgroundColor = .white
+        buttonContainer.backgroundColor = .white
+        title = viewModel.title
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLayout()
         bindToViewModel()
-        
-        playNowButton.addTarget(self, action: #selector(onPlayNowButtonPress(sender:)), for: .touchUpInside)
-        
         viewModel.sendEvent(.fetchData)
     }
     
     private func setupLayout() {
-        view.backgroundColor = .white
-        buttonContainer.backgroundColor = .white
-        
-        view.addSubviews(scrollView, buttonContainer)
-        scrollView.addSubview(infoView)
-        
-        buttonContainer.addSubview(playNowButton)
-        
         scrollView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
         }
+        
         infoView.snp.makeConstraints { make in
             make.top.left.equalToSuperview().offset(16)
             make.right.bottom.equalToSuperview().offset(-16)
             make.width.equalTo(scrollView.snp.width).offset(-32)
         }
+        
         buttonContainer.snp.makeConstraints { make in
             make.height.equalTo(84)
             make.top.equalTo(scrollView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
-        playNowButton.snp.makeConstraints { make in
+        
+        actionButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)

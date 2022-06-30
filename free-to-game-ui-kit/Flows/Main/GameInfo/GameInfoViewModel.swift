@@ -16,13 +16,20 @@ final class GameInfoViewModel {
     private var model: ExtendedGameModel?
     private var subscriptions = Set<AnyCancellable>()
     private var intentSubject = PassthroughSubject<GameInfo.Intent, Never>()
-    private var stateSubject = CurrentValueSubject<GameInfo.State, Never>(.loading)
+    private var stateSubject = CurrentValueSubject<GameInfo.State, Never>(.loading(NSLocalizedString("game_info.loading.title", comment: "")))
+    
+    let title: String?
+    let requirementsTitle: String = NSLocalizedString("game_info.requirement.title", comment: "")
+    let additionalInfoTitle: String = NSLocalizedString("game_info.additional.title", comment: "")
+    let screenshotsTitle: String = NSLocalizedString("game_info.screenshots.title", comment: "")
+    let actionButtonTitle: String = NSLocalizedString("game_info.action_button", comment: "")
     
     var statePublisher: AnyPublisher<GameInfo.State, Never> {
         return stateSubject.eraseToAnyPublisher()
     }
 
-    init(api: API, gameId: Int, onShowWeb: @escaping (URL) -> ()) {
+    init(title: String?, api: API, gameId: Int, onShowWeb: @escaping (URL) -> ()) {
+        self.title = title
         self.api = api
         self.gameId = gameId
         self.onShowWeb = onShowWeb
@@ -52,15 +59,15 @@ final class GameInfoViewModel {
     private func fetchInfo() {
         Task {
             do {
-                self.stateSubject.send(.loading)
+                self.stateSubject.send(.loading(NSLocalizedString("game_info.loading.title", comment: "")))
                 self.model = try await self.api.game(by: gameId)
                 if let model = self.model {
                     self.stateSubject.send(.value(buildGameInfoModel(from: model)))
                 } else {
-                    self.stateSubject.send(.error)
+                    self.stateSubject.send(.error(NSLocalizedString("game_info.error.message", comment: "")))
                 }
             } catch {
-                self.stateSubject.send(.error)
+                self.stateSubject.send(.error(NSLocalizedString("game_info.error.message", comment: "")))
             }
         }
     }
@@ -76,11 +83,11 @@ final class GameInfoViewModel {
         var requirementsInfos: [TitledInfo] = []
         if let requirements = model.systemRequirements {
             requirementsInfos = [
-                TitledInfo(title: "OS", info: requirements.os),
-                TitledInfo(title: "CPU", info: requirements.processor),
-                TitledInfo(title: "RAM", info: requirements.memory),
-                TitledInfo(title: "GPU", info: requirements.graphics),
-                TitledInfo(title: "HDD", info: requirements.storage)
+                TitledInfo(title: NSLocalizedString("game_info.requirement.os", comment: ""), info: requirements.os),
+                TitledInfo(title: NSLocalizedString("game_info.requirement.cpu", comment: ""), info: requirements.processor),
+                TitledInfo(title: NSLocalizedString("game_info.requirement.ram", comment: ""), info: requirements.memory),
+                TitledInfo(title: NSLocalizedString("game_info.requirement.gpu", comment: ""), info: requirements.graphics),
+                TitledInfo(title: NSLocalizedString("game_info.requirement.hdd", comment: ""), info: requirements.storage)
             ]
         }
         return GameInfoModel(
@@ -89,10 +96,10 @@ final class GameInfoViewModel {
             genre: model.genre,
             requirements: requirementsInfos,
             aboutText: model.fullDescription.trimmingCharacters(in: .newlines),
-            additionInfo: [
-                TitledInfo(title: "Developer", info: model.developer),
-                TitledInfo(title: "Publisher", info: model.publisher),
-                TitledInfo(title: "Release Date", info: model.releaseDate)
+            additionalInfo: [
+                TitledInfo(title: NSLocalizedString("game_info.additional.developer", comment: ""), info: model.developer),
+                TitledInfo(title: NSLocalizedString("game_info.additional.publisher", comment: ""), info: model.publisher),
+                TitledInfo(title: NSLocalizedString("game_info.additional.release_date", comment: ""), info: model.releaseDate)
             ],
             screenshotsUrls: model.screenshots.map { $0.url }
         )

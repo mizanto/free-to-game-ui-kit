@@ -15,7 +15,7 @@ enum GameInfo {
     
     enum State {
         case value(GameInfoModel)
-        case loading
-        case error
+        case loading(String)
+        case error(String)
     }
 }

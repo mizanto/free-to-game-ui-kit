@@ -10,9 +10,9 @@ import Foundation
 enum Games {
     enum State {
         case value([GameCellModel])
-        case empty
-        case loading
-        case error
+        case empty(String)
+        case loading(String)
+        case error(String)
     }
     
     enum Intent {

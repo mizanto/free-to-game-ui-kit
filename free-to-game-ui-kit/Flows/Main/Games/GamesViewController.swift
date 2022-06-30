@@ -7,14 +7,28 @@
 
 import Combine
 import Kingfisher
-import SnapKit
 import UIKit
 
 final class GamesViewController: UIViewController {
     var viewModel: GamesViewModel!
     
-    private var tableView: UITableView = GamesViewController.createTableView()
+    private var tableView: UITableView!
+    
     private var subscriptions = Set<AnyCancellable>()
+    
+    override func loadView() {
+        super.loadView()
+        
+        tableView = UITableView()
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
+        tableView.register(GameCell.self, forCellReuseIdentifier: GameCell.identifier)
+        
+        view = tableView
+        
+        title = viewModel.title
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +36,8 @@ final class GamesViewController: UIViewController {
         tableView.dataSource = viewModel
         tableView.delegate = self
         
-        setupLayout()
         bindToViewModel()
         viewModel.sendEvent(.fetchData)
-    }
-    
-    private func setupLayout() {
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.snp.edges)
-        }
     }
     
     private func bindToViewModel() {
@@ -47,15 +53,15 @@ final class GamesViewController: UIViewController {
     
     private func render(state: Games.State) {
         switch state {
-        case .empty:
-            showInfoView(text: "No games")
+        case .empty(let title):
+            showInfoView(title: title)
         case .value(_):
             hideAnyStubs()
             tableView.reloadData()
-        case .loading:
-            showProgressView(title: "Trying to laod games...")
-        case .error:
-            showErrorView(message: "Something went wrong :c")
+        case .loading(let title):
+            showProgressView(title: title)
+        case .error(let message):
+            showErrorView(message: message)
         }
     }
 }
@@ -63,16 +69,5 @@ final class GamesViewController: UIViewController {
 extension GamesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.sendEvent(.selectRow(indexPath.row))
-    }
-}
-
-private extension GamesViewController {
-    static func createTableView() -> UITableView {
-        let tv = UITableView()
-        tv.tableFooterView = UIView()
-        tv.rowHeight = UITableView.automaticDimension
-        tv.separatorStyle = .none
-        tv.register(GameCell.self, forCellReuseIdentifier: GameCell.identifier)
-        return tv
     }
 }

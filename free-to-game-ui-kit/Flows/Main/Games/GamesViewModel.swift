@@ -12,9 +12,11 @@ final class GamesViewModel: NSObject {
     private let api: API
     private let onSelect: (String, Int) -> ()
     
-    private var stateSubject = CurrentValueSubject<Games.State, Never>(.empty)
+    private var stateSubject = CurrentValueSubject<Games.State, Never>(.empty(NSLocalizedString("games.empty.title", comment: "")))
     private var intentSubject = PassthroughSubject<Games.Intent, Never>()
     private var subscriptions = Set<AnyCancellable>()
+    
+    var title: String? = NSLocalizedString("games.title", comment: "")
     
     var statePublisher: AnyPublisher<Games.State, Never> {
         return stateSubject.eraseToAnyPublisher()
@@ -52,17 +54,17 @@ final class GamesViewModel: NSObject {
     private func fetchGames() {
         Task {
             do {
-                stateSubject.send(.loading)
+                stateSubject.send(.loading(NSLocalizedString("games.loading.title", comment: "")))
                 models = try await api.games()
                 if models.isEmpty {
-                    stateSubject.send(.empty)
+                    stateSubject.send(.empty(NSLocalizedString("games.empty.title", comment: "")))
                 } else {
                     let cellModels = models.map { $0.toGameCellModel() }
                     stateSubject.send(.value(cellModels))
                 }
             } catch {
                 print(error)
-                stateSubject.send(.error)
+                stateSubject.send(.error(NSLocalizedString("games.error.title", comment: "")))
             }
         }
     }

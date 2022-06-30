@@ -9,9 +9,8 @@ import UIKit
 
 final class GameInfoAssembly {
     static func build(title: String?, gameId: Int, api: API, onShowWeb: @escaping (URL) -> ()) -> UIViewController {
-        let viewModel = GameInfoViewModel(api: api, gameId: gameId, onShowWeb: onShowWeb)
+        let viewModel = GameInfoViewModel(title: title, api: api, gameId: gameId, onShowWeb: onShowWeb)
         let viewController = GameInfoViewController()
-        viewController.title = title
         viewController.viewModel = viewModel
         return viewController
     }

@@ -15,10 +15,17 @@ final class GameInfoView: CardView {
     private let thumbnailImageView: UIImageView = UIImageView()
     private let platformTagView: TagView = TagView(color: .systemGreen)
     private let genreTagView: TagView = TagView(color: .systemBlue)
-    private let requirementsView: TextInfoBlockView = TextInfoBlockView(headerTitle: "System Requirements")
     private let aboutTextLabel: UILabel = UILabel(font: .systemFont(ofSize: 15, weight: .regular), numberOfLines: 0)
-    private let additionalnfoView: TextInfoBlockView = TextInfoBlockView(headerTitle: "Additional Information")
-    private let screenshotsView: ImageCarouselView = ImageCarouselView(title: "Screenshots")
+    private let requirementsView: TextInfoBlockView
+    private let additionalInfoView: TextInfoBlockView
+    private let screenshotsView: ImageCarouselView
+    
+    init(requirementsTitle: String, additionalInfoTitle: String, screenshotsTitle: String) {
+        requirementsView = TextInfoBlockView(headerTitle: requirementsTitle)
+        additionalInfoView = TextInfoBlockView(headerTitle: additionalInfoTitle)
+        screenshotsView = ImageCarouselView(title: screenshotsTitle)
+        super.init(frame: .zero)
+    }
     
     func update(with model: GameInfoModel) {
         thumbnailImageView.kf.setImage(with: model.thumbnailUrl)
@@ -37,9 +44,9 @@ final class GameInfoView: CardView {
             vStack.addView(requirementsView)
         }
         
-        if !model.additionInfo.isEmpty {
-            additionalnfoView.setTiteledInfos(infos: model.additionInfo)
-            vStack.addView(additionalnfoView)
+        if !model.additionalInfo.isEmpty {
+            additionalInfoView.setTiteledInfos(infos: model.additionalInfo)
+            vStack.addView(additionalInfoView)
         }
         
         if !model.screenshotsUrls.isEmpty {
