@@ -17,6 +17,7 @@ enum Games {
     
     enum Intent {
         case fetchData
+        case retry
         case selectRow(Int)
     }
 }

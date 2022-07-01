@@ -25,7 +25,7 @@ struct API {
             throw NetworkError.unknown(nil)
         }
         
-        if 200..<30 ~= statusCode {
+        if 200..<300 ~= statusCode {
             do {
                 return try decoder.decode(T.self, from: data)
             } catch {

@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SwiftUI
 
-enum NetworkError: Error {
+enum NetworkError: LocalizedError {
     case badRequest
     case forbiden
     case notFound
@@ -17,6 +16,19 @@ enum NetworkError: Error {
     case unavailable
     case parsing
     case unknown(Int?)
+    
+    var errorDescription: String? {
+        switch self {
+        case .badRequest, .notFound, .internalServerError, .unavailable, .parsing:
+            return NSLocalizedString("error.network.default", comment: "")
+        case .forbiden:
+            return NSLocalizedString("error.network.vpn", comment: "")
+        case .toManyRequests:
+            return NSLocalizedString("error.network.many_requests", comment: "")
+        case .unknown(_):
+            return NSLocalizedString("error.unknown", comment: "")
+        }
+    }
     
     static func error(code: Int) -> NetworkError {
         switch code {

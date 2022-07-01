@@ -24,20 +24,30 @@ final class GamesViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.register(GameCell.self, forCellReuseIdentifier: GameCell.identifier)
+        tableView.dataSource = viewModel
+        tableView.delegate = self
         
-        view = tableView
+        view.addSubview(tableView)
         
         title = viewModel.title
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.dataSource = viewModel
-        tableView.delegate = self
         
         bindToViewModel()
         viewModel.sendEvent(.fetchData)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupLayout()
+    }
+    
+    private func setupLayout() {
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     private func bindToViewModel() {
@@ -53,16 +63,20 @@ final class GamesViewController: UIViewController {
     
     private func render(state: Games.State) {
         switch state {
-        case .empty(let title):
-            showInfoView(title: title)
+        case .empty(let message):
+            showStubView(type: .empty, message: message, action: retry)
         case .value(_):
             hideAnyStubs()
             tableView.reloadData()
         case .loading(let title):
             showProgressView(title: title)
         case .error(let message):
-            showErrorView(message: message)
+            showStubView(type: .error, message: message, action: retry)
         }
+    }
+    
+    private func retry() {
+        viewModel.sendEvent(.retry)
     }
 }
 

@@ -17,10 +17,8 @@
 		AD85659228636BAD00BA430A /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659128636BAD00BA430A /* NSObject+Extension.swift */; };
 		AD85659528636D0900BA430A /* StringIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659428636D0900BA430A /* StringIdentifiable.swift */; };
 		AD85659728647C9B00BA430A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659628647C9B00BA430A /* UIViewController+Extension.swift */; };
-		AD85659A28647CD300BA430A /* StubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659928647CD300BA430A /* StubView.swift */; };
 		AD85659C28647CEC00BA430A /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659B28647CEC00BA430A /* ProgressView.swift */; };
-		AD85659E28647D2C00BA430A /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659D28647D2C00BA430A /* InfoView.swift */; };
-		AD8565A02864802800BA430A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659F2864802800BA430A /* ErrorView.swift */; };
+		AD8565A02864802800BA430A /* StubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659F2864802800BA430A /* StubView.swift */; };
 		AD8565A3286596C600BA430A /* GameInfoAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565A2286596C600BA430A /* GameInfoAssembly.swift */; };
 		AD8565A52865973E00BA430A /* GameInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565A42865973E00BA430A /* GameInfoViewController.swift */; };
 		AD8565A72865975E00BA430A /* GameInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565A62865975E00BA430A /* GameInfoViewModel.swift */; };
@@ -39,7 +37,7 @@
 		AD8565C3286C422F00BA430A /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565C2286C422F00BA430A /* UIImage+Extension.swift */; };
 		AD8565C5286C425A00BA430A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565C4286C425A00BA430A /* UIButton+Extension.swift */; };
 		AD8565C7286C44E600BA430A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565C6286C44E600BA430A /* UIColor+Extension.swift */; };
-		AD8565C9286C499A00BA430A /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565C8286C499A00BA430A /* RoundedButton.swift */; };
+		AD8565C9286C499A00BA430A /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565C8286C499A00BA430A /* PrimaryButton.swift */; };
 		AD8565CB286C4CC200BA430A /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565CA286C4CC200BA430A /* ShadowView.swift */; };
 		AD8565CE286C52C200BA430A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565CD286C52C200BA430A /* WebViewController.swift */; };
 		AD8565D0286C56F400BA430A /* WebViewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565CF286C56F400BA430A /* WebViewAssembly.swift */; };
@@ -78,10 +76,8 @@
 		AD85659128636BAD00BA430A /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		AD85659428636D0900BA430A /* StringIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringIdentifiable.swift; sourceTree = "<group>"; };
 		AD85659628647C9B00BA430A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		AD85659928647CD300BA430A /* StubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubView.swift; sourceTree = "<group>"; };
 		AD85659B28647CEC00BA430A /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
-		AD85659D28647D2C00BA430A /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
-		AD85659F2864802800BA430A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		AD85659F2864802800BA430A /* StubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubView.swift; sourceTree = "<group>"; };
 		AD8565A2286596C600BA430A /* GameInfoAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoAssembly.swift; sourceTree = "<group>"; };
 		AD8565A42865973E00BA430A /* GameInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoViewController.swift; sourceTree = "<group>"; };
 		AD8565A62865975E00BA430A /* GameInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoViewModel.swift; sourceTree = "<group>"; };
@@ -100,7 +96,7 @@
 		AD8565C2286C422F00BA430A /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		AD8565C4286C425A00BA430A /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AD8565C6286C44E600BA430A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		AD8565C8286C499A00BA430A /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		AD8565C8286C499A00BA430A /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		AD8565CA286C4CC200BA430A /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		AD8565CD286C52C200BA430A /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AD8565CF286C56F400BA430A /* WebViewAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewAssembly.swift; sourceTree = "<group>"; };
@@ -174,7 +170,7 @@
 				AD856588286330E000BA430A /* TagView.swift */,
 				AD85658A2863312900BA430A /* CardView.swift */,
 				AD8565BC286C39C400BA430A /* ImageCarouselView.swift */,
-				AD8565C8286C499A00BA430A /* RoundedButton.swift */,
+				AD8565C8286C499A00BA430A /* PrimaryButton.swift */,
 				AD8565CA286C4CC200BA430A /* ShadowView.swift */,
 			);
 			path = CommonViews;
@@ -200,10 +196,8 @@
 		AD85659828647CBD00BA430A /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
-				AD85659928647CD300BA430A /* StubView.swift */,
 				AD85659B28647CEC00BA430A /* ProgressView.swift */,
-				AD85659D28647D2C00BA430A /* InfoView.swift */,
-				AD85659F2864802800BA430A /* ErrorView.swift */,
+				AD85659F2864802800BA430A /* StubView.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -513,7 +507,6 @@
 				ADBB60822861B572003E26A3 /* NetworkError.swift in Sources */,
 				ADBEB65628608695008D44B4 /* MainCoordinator.swift in Sources */,
 				AD85658E2863665700BA430A /* GameCellModel.swift in Sources */,
-				AD85659E28647D2C00BA430A /* InfoView.swift in Sources */,
 				AD8565C3286C422F00BA430A /* UIImage+Extension.swift in Sources */,
 				AD8565BB286AE8E400BA430A /* UIScrollView+Extension.swift in Sources */,
 				AD8565A92865CB0400BA430A /* UIStackView+Extension.swift in Sources */,
@@ -547,14 +540,13 @@
 				AD8565C7286C44E600BA430A /* UIColor+Extension.swift in Sources */,
 				ADBEB65928608700008D44B4 /* EmptyViewControllerAssembly.swift in Sources */,
 				ADBB60802861B54E003E26A3 /* API.swift in Sources */,
-				AD85659A28647CD300BA430A /* StubView.swift in Sources */,
-				AD8565A02864802800BA430A /* ErrorView.swift in Sources */,
+				AD8565A02864802800BA430A /* StubView.swift in Sources */,
 				ADBB60872861B5C8003E26A3 /* ShortGameModel.swift in Sources */,
 				AD8565C5286C425A00BA430A /* UIButton+Extension.swift in Sources */,
 				AD8565A52865973E00BA430A /* GameInfoViewController.swift in Sources */,
 				AD8565CE286C52C200BA430A /* WebViewController.swift in Sources */,
 				AD85659C28647CEC00BA430A /* ProgressView.swift in Sources */,
-				AD8565C9286C499A00BA430A /* RoundedButton.swift in Sources */,
+				AD8565C9286C499A00BA430A /* PrimaryButton.swift in Sources */,
 				ADBEB65028608620008D44B4 /* CoordinatorFactory.swift in Sources */,
 				ADBB60892861B5E1003E26A3 /* ExtendedGameModel.swift in Sources */,
 			);

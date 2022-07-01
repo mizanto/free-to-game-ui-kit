@@ -9,6 +9,11 @@ import UIKit
 import Kingfisher
 
 final class GameInfoView: CardView {
+    private enum Constant {
+        static let horizontalPadding: CGFloat = 12
+        static let verticalPadding: CGFloat = 12
+    }
+    
     private let vStack: VStackView = VStackView(alignment: .leading, spacing: 12)
     private let tagsHStack: HStackView = HStackView(alignment: .leading, spacing: 8)
     
@@ -74,15 +79,15 @@ final class GameInfoView: CardView {
         }
         
         tagsHStack.snp.makeConstraints { make in
-            make.top.equalTo(thumbnailImageView.snp.bottom).offset(16)
-            make.left.equalToSuperview().offset(12)
+            make.top.equalTo(thumbnailImageView.snp.bottom).offset(Constant.verticalPadding)
+            make.left.equalToSuperview().offset(Constant.horizontalPadding)
         }
         
         vStack.snp.makeConstraints { make in
-            make.top.equalTo(tagsHStack.snp.bottom).offset(16)
-            make.left.equalToSuperview().offset(12)
-            make.right.equalToSuperview().offset(-12)
-            make.bottom.equalToSuperview().offset(-12)
+            make.top.equalTo(tagsHStack.snp.bottom).offset(Constant.verticalPadding)
+            make.left.equalToSuperview().offset(Constant.horizontalPadding)
+            make.right.equalToSuperview().offset(-Constant.horizontalPadding)
+            make.bottom.equalToSuperview().offset(-Constant.verticalPadding)
         }
     }
 }

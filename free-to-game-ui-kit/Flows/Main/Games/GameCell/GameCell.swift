@@ -9,6 +9,14 @@ import SnapKit
 import UIKit
 
 class GameCell: UITableViewCell {
+    private enum Constant {
+        static let outerHorizontalPading: CGFloat = 16
+        static let outerVerticalPading: CGFloat = 8
+        static let innerHorizontalPadding: CGFloat = 12
+        static let innerVerticalPadding: CGFloat = 12
+        static let imageHeight: CGFloat = 180
+    }
+    
     private let cardView: CardView = createCardView()
     private let thumbnailImageView: UIImageView = createThumbnailImageView()
     private let platformTagView: TagView = createPlatformTagView()
@@ -46,22 +54,22 @@ class GameCell: UITableViewCell {
         )
         
         cardView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.bottom.equalToSuperview().offset(-8)
-            make.left.equalToSuperview().offset(16)
-            make.right.equalToSuperview().offset(-16)
+            make.top.equalToSuperview().offset(Constant.outerVerticalPading)
+            make.bottom.equalToSuperview().offset(-Constant.outerVerticalPading)
+            make.left.equalToSuperview().offset(Constant.outerHorizontalPading)
+            make.right.equalToSuperview().offset(-Constant.outerHorizontalPading)
         }
         
         thumbnailImageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.height.equalTo(194)
+            make.height.equalTo(Constant.imageHeight)
         }
         
         platformTagView.snp.makeConstraints { make in
-            make.top.equalTo(thumbnailImageView.snp.bottom).offset(16)
-            make.left.equalToSuperview().offset(12)
+            make.top.equalTo(thumbnailImageView.snp.bottom).offset(Constant.innerVerticalPadding)
+            make.left.equalToSuperview().offset(Constant.innerHorizontalPadding)
         }
         
         genreTagView.snp.makeConstraints { make in
@@ -70,16 +78,16 @@ class GameCell: UITableViewCell {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(platformTagView.snp.bottom).offset(12)
-            make.left.equalToSuperview().offset(16)
-            make.right.equalToSuperview().offset(-16)
+            make.top.equalTo(platformTagView.snp.bottom).offset(Constant.innerVerticalPadding)
+            make.left.equalToSuperview().offset(Constant.innerHorizontalPadding)
+            make.right.equalToSuperview().offset(-Constant.innerHorizontalPadding)
         }
         
         infoLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.left.equalToSuperview().offset(16)
-            make.right.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-16)
+            make.left.equalToSuperview().offset(Constant.innerHorizontalPadding)
+            make.right.equalToSuperview().offset(-Constant.innerHorizontalPadding)
+            make.bottom.equalToSuperview().offset(-Constant.innerVerticalPadding)
         }
     }
 }

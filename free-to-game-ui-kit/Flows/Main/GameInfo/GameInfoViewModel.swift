@@ -51,6 +51,8 @@ final class GameInfoViewModel {
                     self.fetchInfo()
                 case .playNowPressed:
                     self.shwoWebSite()
+                case .retry:
+                    self.fetchInfo()
                 }
             }
             .store(in: &subscriptions)
@@ -64,11 +66,20 @@ final class GameInfoViewModel {
                 if let model = self.model {
                     self.stateSubject.send(.value(buildGameInfoModel(from: model)))
                 } else {
-                    self.stateSubject.send(.error(NSLocalizedString("game_info.error.message", comment: "")))
+                    self.stateSubject.send(.error(NSLocalizedString("error.unknown", comment: "")))
                 }
             } catch {
-                self.stateSubject.send(.error(NSLocalizedString("game_info.error.message", comment: "")))
+                let message = message(for: error)
+                self.stateSubject.send(.error(message))
             }
+        }
+    }
+    
+    private func message(for error: Error) -> String {
+        if let message = (error as? NetworkError)?.errorDescription {
+            return message
+        } else {
+            return NSLocalizedString("error.unknown", comment: "")
         }
     }
     
