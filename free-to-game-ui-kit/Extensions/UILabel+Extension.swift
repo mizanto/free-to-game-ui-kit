@@ -9,7 +9,7 @@ import UIKit
 
 extension UILabel {
     
-    convenience init(text: String? = nil, alignment: NSTextAlignment = .left, font: UIFont = .systemFont(ofSize: 13), numberOfLines: Int = 1) {
+    convenience init(text: String? = nil, alignment: NSTextAlignment = .left, font: UIFont = .body, numberOfLines: Int = 1) {
         self.init(frame: .zero)
         self.text = text
         self.textAlignment = alignment
@@ -17,15 +17,19 @@ extension UILabel {
         self.numberOfLines = numberOfLines
     }
     
-    @discardableResult
-    func setFont(_ font: UIFont) -> UILabel {
-        self.font = font
-        return self
+    static func head(text: String? = nil, alignment: NSTextAlignment = .left, numberOfLines: Int = 1) -> UILabel {
+        return UILabel(text: text, alignment: alignment, font: .head, numberOfLines: numberOfLines)
     }
     
-    @discardableResult
-    func setNumberofLines(_ numberOfLines: Int) -> UILabel {
-        self.numberOfLines = numberOfLines
-        return self
+    static func title(text: String? = nil, alignment: NSTextAlignment = .left, numberOfLines: Int = 1) -> UILabel {
+        return UILabel(text: text, alignment: alignment, font: .title, numberOfLines: numberOfLines)
+    }
+    
+    static func body(text: String? = nil, alignment: NSTextAlignment = .left, numberOfLines: Int = 1) -> UILabel {
+        return UILabel(text: text, alignment: alignment, font: .body, numberOfLines: numberOfLines)
+    }
+    
+    static func accent(text: String? = nil, alignment: NSTextAlignment = .left, numberOfLines: Int = 1) -> UILabel {
+        return UILabel(text: text, alignment: alignment, font: .accent, numberOfLines: numberOfLines)
     }
 }

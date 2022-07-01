@@ -32,12 +32,7 @@ final class StubView: UIView {
     
     init(type: StubType, message: String, buttonTitle: String, action: @escaping () -> ()) {
         self.imageView = UIImageView(image: type.image)
-        self.messageLabel = UILabel(
-            text: message,
-            alignment: .center,
-            font: .systemFont(ofSize: 17, weight: .medium),
-            numberOfLines: 0
-        )
+        self.messageLabel = UILabel.title(text: message, alignment: .center, numberOfLines: 0)
         self.button = PrimaryButton(title: buttonTitle)
         self.action = action
         self.container = UIView()

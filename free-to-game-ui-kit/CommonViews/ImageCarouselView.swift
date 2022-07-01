@@ -14,7 +14,7 @@ final class ImageCarouselView: UIView {
         get { return titleLabel.text }
     }
     
-    private let titleLabel: UILabel = UILabel(font: .systemFont(ofSize: 22, weight: .semibold))
+    private let titleLabel: UILabel = UILabel.head()
     private let scrollView: UIScrollView = UIScrollView(showsHorizontalIndicator: false)
     private let hStack: HStackView = HStackView(alignment: .center, spacing: 8)
     

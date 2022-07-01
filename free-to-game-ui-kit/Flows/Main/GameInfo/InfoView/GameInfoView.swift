@@ -20,7 +20,7 @@ final class GameInfoView: CardView {
     private let thumbnailImageView: UIImageView = UIImageView()
     private let platformTagView: TagView = TagView(color: .systemGreen)
     private let genreTagView: TagView = TagView(color: .systemBlue)
-    private let aboutTextLabel: UILabel = UILabel(font: .systemFont(ofSize: 15, weight: .regular), numberOfLines: 0)
+    private let aboutTextLabel: UILabel = UILabel.body(numberOfLines: 0)
     private let requirementsView: TextInfoBlockView
     private let additionalInfoView: TextInfoBlockView
     private let screenshotsView: ImageCarouselView

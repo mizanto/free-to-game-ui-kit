@@ -9,7 +9,7 @@ import UIKit
 
 final class ProgressView: UIView {
     private let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    private let label: UILabel = UILabel(alignment: .center, font: .systemFont(ofSize: 17, weight: .medium), numberOfLines: 0)
+    private let label: UILabel = UILabel.title(alignment: .center, numberOfLines: 0)
     let containerView: UIView = UIView()
     
     func setTitle(_ title: String) {

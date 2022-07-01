@@ -17,12 +17,12 @@ class GameCell: UITableViewCell {
         static let imageHeight: CGFloat = 180
     }
     
-    private let cardView: CardView = createCardView()
-    private let thumbnailImageView: UIImageView = createThumbnailImageView()
-    private let platformTagView: TagView = createPlatformTagView()
-    private let genreTagView: TagView = createGenreTagView()
-    private let titleLabel: UILabel = createTitleLabel()
-    private let infoLabel: UILabel = createInfoLabel()
+    private let cardView: CardView = CardView()
+    private let thumbnailImageView: UIImageView = UIImageView()
+    private let platformTagView: TagView = TagView(color: .systemGreen)
+    private let genreTagView: TagView = TagView(color: .systemBlue)
+    private let titleLabel: UILabel = UILabel.head(numberOfLines: 0)
+    private let infoLabel: UILabel = UILabel.body(numberOfLines: 0)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -89,44 +89,5 @@ class GameCell: UITableViewCell {
             make.right.equalToSuperview().offset(-Constant.innerHorizontalPadding)
             make.bottom.equalToSuperview().offset(-Constant.innerVerticalPadding)
         }
-    }
-}
-
-private extension GameCell {
-    static func createCardView() -> CardView {
-        let сv = CardView()
-        сv.backgroundColor = .white
-        return сv
-    }
-    
-    static func createThumbnailImageView() -> UIImageView {
-        let iv = UIImageView()
-        return iv
-    }
-    
-    static func createPlatformTagView() -> TagView {
-        let tv = TagView()
-        tv.color = .systemGreen
-        return tv
-    }
-    
-    static func createGenreTagView() -> TagView {
-        let tv = TagView()
-        tv.color = .systemBlue
-        return tv
-    }
-    
-    static func createTitleLabel() -> UILabel {
-        let l = UILabel()
-        l.font = .systemFont(ofSize: 22, weight: .semibold)
-        l.numberOfLines = 0
-        return l
-    }
-    
-    static func createInfoLabel() -> UILabel {
-        let l = UILabel()
-        l.font = .systemFont(ofSize: 13)
-        l.numberOfLines = 0
-        return l
     }
 }
