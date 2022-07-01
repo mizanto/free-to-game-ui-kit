@@ -1,5 +1,5 @@
 //
-//  Font+Extension.swift
+//  UIFont+Extension.swift
 //  free-to-game-ui-kit
 //
 //  Created by Sergey Bendak on 01.07.2022.
