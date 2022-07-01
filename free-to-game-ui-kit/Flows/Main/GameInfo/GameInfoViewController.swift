@@ -10,12 +10,18 @@ import Kingfisher
 import UIKit
 
 final class GameInfoViewController: UIViewController {
+    private enum Constant {
+        static let verticalPadding: CGFloat = 16
+        static let horizontalPadding: CGFloat = 16
+        static let buttonVerticalPadding: CGFloat = 12
+    }
+    
     var viewModel: GameInfoViewModel!
     
     private var scrollView: UIScrollView!
     private var infoView: GameInfoView!
     private var buttonContainer: ShadowView!
-    private var actionButton: UIButton!
+    private var actionButton: PrimaryButton!
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -35,11 +41,7 @@ final class GameInfoViewController: UIViewController {
             shadowOpacity: 0.25
         )
         
-        actionButton = RoundedButton(
-            title: viewModel.actionButtonTitle,
-            backgroundColor: UIColor(hex: "#5D5FEF")!,
-            cornerRadius: 8
-        )
+        actionButton = PrimaryButton(title: viewModel.actionButtonTitle)
         actionButton.addTarget(self, action: #selector(onPlayNowButtonPress(sender:)), for: .touchUpInside)
         
         view.addSubviews(scrollView, buttonContainer)
@@ -54,9 +56,13 @@ final class GameInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupLayout()
         bindToViewModel()
         viewModel.sendEvent(.fetchData)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupLayout()
     }
     
     private func setupLayout() {
@@ -65,22 +71,23 @@ final class GameInfoViewController: UIViewController {
         }
         
         infoView.snp.makeConstraints { make in
-            make.top.left.equalToSuperview().offset(16)
-            make.right.bottom.equalToSuperview().offset(-16)
-            make.width.equalTo(scrollView.snp.width).offset(-32)
+            make.left.equalToSuperview().offset(Constant.horizontalPadding)
+            make.top.equalToSuperview().offset(Constant.verticalPadding)
+            make.right.equalToSuperview().offset(-Constant.horizontalPadding)
+            make.bottom.equalToSuperview().offset(-Constant.verticalPadding)
+            make.width.equalTo(scrollView.snp.width).offset(-2 * Constant.horizontalPadding)
         }
         
         buttonContainer.snp.makeConstraints { make in
-            make.height.equalTo(84)
+            make.height.equalTo(PrimaryButton.height + 2 * Constant.buttonVerticalPadding + view.safeAreaInsets.bottom)
             make.top.equalTo(scrollView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
-        
+
         actionButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(12)
-            make.left.equalToSuperview().offset(16)
-            make.right.equalToSuperview().offset(-16)
-            make.height.equalTo(48)
+            make.top.equalToSuperview().offset(Constant.buttonVerticalPadding)
+            make.left.equalToSuperview().offset(Constant.horizontalPadding)
+            make.right.equalToSuperview().offset(-Constant.horizontalPadding)
         }
     }
     
@@ -103,19 +110,20 @@ final class GameInfoViewController: UIViewController {
     private func render(state: GameInfo.State) {
         switch state {
         case .value(let infoModel):
-            infoView.isHidden = false
-            hideAnyStubs()
             showInfoView(from: infoModel)
-        case .loading:
-            infoView.isHidden = true
-            showProgressView(title: "Trying to laod game info...")
-        case .error:
-            infoView.isHidden = true
-            showErrorView(message: "Something went wrong :c")
+        case .loading(let message):
+            showProgressView(title: message)
+        case .error(let message):
+            showStubView(type: .error, message: message, action: retry)
         }
     }
     
     private func showInfoView(from model: GameInfoModel) {
+        hideAnyStubs()
         infoView.update(with: model)
+    }
+    
+    private func retry() {
+        viewModel.sendEvent(.retry)
     }
 }

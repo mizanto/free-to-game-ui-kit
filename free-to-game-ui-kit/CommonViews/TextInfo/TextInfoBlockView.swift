@@ -8,7 +8,7 @@
 import UIKit
 
 final class TextInfoBlockView: UIView {
-    private let headerTitleLabel: UILabel = UILabel(font: .systemFont(ofSize: 22, weight: .semibold))
+    private let headerTitleLabel: UILabel = UILabel.head()
     private let vStack: UIStackView = VStackView(alignment: .leading, spacing: 8)
     
     convenience init(headerTitle: String) {

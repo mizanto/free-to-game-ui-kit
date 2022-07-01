@@ -15,17 +15,13 @@ class TagView: UIView {
     
     var color: UIColor? {
         set {
-            backgroundColor = newValue?.withAlphaComponent(0.15)
+            backgroundColor = newValue?.withAlphaComponent(0.10)
             label.textColor = newValue
         }
         get { return label.textColor}
     }
     
-    private let label: UILabel = {
-        let l = UILabel()
-        l.font = .systemFont(ofSize: 15, weight: .bold)
-        return l
-    }()
+    private let label: UILabel = UILabel.accent()
     
     convenience init(color: UIColor) {
         self.init(frame: .zero)

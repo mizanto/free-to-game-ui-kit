@@ -6,17 +6,23 @@
   
 */
 
+// errors
+
+"error.unknown" = "Something went wrong. Please try again later.";
+
+"error.network.default" = "Unable to get data. Please try again later.";
+"error.network.vpn" = "Unable to get data. In case you use VPN, try to turn it off and retry.";
+"error.network.many_requests" = "It looks like you are trying to get data too often. Please try again in a few minutes.";
+
 // games list
 
 "games.title" = "Games";
 "games.empty.title" = "No games";
 "games.loading.title" = "Trying to laod games...";
-"games.error.title" = "Something went wrong :c";
 
 // game info
 
 "game_info.loading.title" = "Trying to laod game info...";
-"game_info.error.message" = "Something went wrong :c";
 
 "game_info.action_button" = "Play now!";
 

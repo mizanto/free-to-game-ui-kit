@@ -21,15 +21,19 @@ struct API {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        // TODO: add error handling
-        guard let httpResponse = response as? HTTPURLResponse,
-                httpResponse.statusCode == 200 else {
-            throw URLError(.badServerResponse)
+        guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
+            throw NetworkError.unknown(nil)
         }
         
-        let decoded = try decoder.decode(T.self, from: data)
-        
-        return decoded
+        if 200..<300 ~= statusCode {
+            do {
+                return try decoder.decode(T.self, from: data)
+            } catch {
+                throw NetworkError.parsing
+            }
+        } else {
+            throw NetworkError.error(code: statusCode)
+        }
     }
     
     func games() async throws -> [ShortGameModel] {

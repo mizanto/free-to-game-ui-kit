@@ -46,6 +46,8 @@ final class GamesViewModel: NSObject {
                     self.fetchGames()
                 case .selectRow(let row):
                     self.select(row: row)
+                case .retry:
+                    self.fetchGames()
                 }
             }
             .store(in: &subscriptions)
@@ -63,9 +65,17 @@ final class GamesViewModel: NSObject {
                     stateSubject.send(.value(cellModels))
                 }
             } catch {
-                print(error)
-                stateSubject.send(.error(NSLocalizedString("games.error.title", comment: "")))
+                let message = message(for: error)
+                stateSubject.send(.error(message))
             }
+        }
+    }
+    
+    private func message(for error: Error) -> String {
+        if let message = (error as? NetworkError)?.errorDescription {
+            return message
+        } else {
+            return NSLocalizedString("error.unknown", comment: "")
         }
     }
     

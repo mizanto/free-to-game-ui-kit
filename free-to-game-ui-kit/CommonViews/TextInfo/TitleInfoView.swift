@@ -12,14 +12,8 @@ typealias TitledInfo = (title: String, info: String?)
 final class TitleInfoView: UIView {
     var separator: String = ":"
     
-    private let titleLabel: UILabel = UILabel(
-        font: .systemFont(ofSize: 15, weight: .semibold),
-        numberOfLines: 0
-    )
-    private let infoLabel: UILabel = UILabel(
-        font: .systemFont(ofSize: 15),
-        numberOfLines: 0
-    )
+    private let titleLabel: UILabel = UILabel.accent(numberOfLines: 0)
+    private let infoLabel: UILabel = UILabel.body(numberOfLines: 0)
     
     convenience init(titledInfo: TitledInfo) {
         self.init(frame: .zero)

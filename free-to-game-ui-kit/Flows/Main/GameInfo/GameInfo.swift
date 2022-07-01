@@ -10,6 +10,7 @@ import Foundation
 enum GameInfo {
     enum Intent {
         case fetchData
+        case retry
         case playNowPressed
     }
     

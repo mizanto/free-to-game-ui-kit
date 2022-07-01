@@ -7,9 +7,10 @@
 
 import UIKit
 
-final class ProgressView: StubView {
+final class ProgressView: UIView {
     private let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    private let label: UILabel = UILabel()
+    private let label: UILabel = UILabel.title(alignment: .center, numberOfLines: 0)
+    let containerView: UIView = UIView()
     
     func setTitle(_ title: String) {
         label.text = title
@@ -33,10 +34,17 @@ final class ProgressView: StubView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setupLayout() {
-        super.setupLayout()
+    private func setupLayout() {
         backgroundColor = .white
-        container.addSubviews(activityIndicator, label)
+        
+        addSubview(containerView)
+        containerView.addSubviews(activityIndicator, label)
+        
+        containerView.snp.makeConstraints { make in
+            make.centerX.equalTo(snp.centerX)
+            make.centerY.equalTo(snp.centerY)
+            make.width.equalToSuperview().multipliedBy(0.8)
+        }
         
         activityIndicator.snp.makeConstraints { make in
             make.top.equalToSuperview()

@@ -10,30 +10,22 @@ import UIKit
 extension UIViewController {
     
     func hideAnyStubs() {
-        hideInfoView()
-        hideErrorView()
+        hideStubView()
         hideProgressView()
     }
     
     // MARK: - ProgressView
     
     func showProgressView(title: String = "Loading...") {
-        hideInfoView()
-        hideErrorView()
+        hideAnyStubs()
         
-        if let progressView = view.subviews.first(where: { $0 is ProgressView }) as? ProgressView {
-            view.bringSubviewToFront(progressView)
-            progressView.setTitle(title)
-            progressView.start()
-        } else {
-            let progressView = ProgressView()
-            progressView.setTitle(title)
-            view.addSubview(progressView)
-            progressView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-            progressView.start()
+        let progressView = ProgressView()
+        progressView.setTitle(title)
+        view.addSubview(progressView)
+        progressView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
+        progressView.start()
     }
     
     func hideProgressView() {
@@ -43,52 +35,20 @@ extension UIViewController {
         }
     }
     
-    // MARK: - InfoView
-    
-    func showInfoView(title: String = "Info View") {
-        hideProgressView()
-        hideErrorView()
-        
-        if let infoView = view.subviews.first(where: { $0 is InfoView }) as? InfoView {
-            view.bringSubviewToFront(infoView)
-            infoView.text = title
-        } else {
-            let infoView = InfoView()
-            infoView.text = title
-            view.addSubview(infoView)
-            infoView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-        }
-    }
-    
-    func hideInfoView() {
-        if let infoView = view.subviews.first(where: { $0 is InfoView }) as? InfoView {
-            infoView.removeFromSuperview()
-        }
-    }
-    
     // MARK: - ErrorView
     
-    func showErrorView(message: String = "Error Message") {
-        hideProgressView()
-        hideInfoView()
+    func showStubView(type: StubView.StubType, message: String, action: @escaping () -> ()) {
+        hideAnyStubs()
         
-        if let errorView = view.subviews.first(where: { $0 is ErrorView }) as? ErrorView {
-            view.bringSubviewToFront(errorView)
-            errorView.errorMessage = message
-        } else {
-            let errorView = ErrorView()
-            errorView.errorMessage = message
-            view.addSubview(errorView)
-            errorView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
+        let errorView = StubView(type: type, message: message, buttonTitle: "Retry", action: action)
+        view.addSubview(errorView)
+        errorView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
-    func hideErrorView() {
-        if let errorView = view.subviews.first(where: { $0 is ErrorView }) as? ErrorView {
+    func hideStubView() {
+        if let errorView = view.subviews.first(where: { $0 is StubView }) as? StubView {
             errorView.removeFromSuperview()
         }
     }
