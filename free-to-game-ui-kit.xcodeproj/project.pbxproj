@@ -10,6 +10,7 @@
 		237248835F1E67E7C8DE0D29 /* Pods_free_to_game_ui_kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F6F65F3871C22290F69633 /* Pods_free_to_game_ui_kit.framework */; };
 		AD849D84286EF4FB00C41792 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD849D83286EF4FB00C41792 /* UIFont+Extension.swift */; };
 		AD849DD1287560C300C41792 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD849DD0287560C300C41792 /* NetworkErrorTests.swift */; };
+		AD849DD4287573BC00C41792 /* EndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD849DD3287573BC00C41792 /* EndPointTests.swift */; };
 		AD8565832862295400BA430A /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565822862295400BA430A /* GameCell.swift */; };
 		AD856586286229A000BA430A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD856585286229A000BA430A /* UIView+Extension.swift */; };
 		AD856589286330E000BA430A /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD856588286330E000BA430A /* TagView.swift */; };
@@ -46,7 +47,7 @@
 		AD8565D3286D843700BA430A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD8565D5286D843700BA430A /* Localizable.strings */; };
 		ADBB60802861B54E003E26A3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB607F2861B54E003E26A3 /* API.swift */; };
 		ADBB60822861B572003E26A3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60812861B572003E26A3 /* NetworkError.swift */; };
-		ADBB60842861B595003E26A3 /* API+EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60832861B595003E26A3 /* API+EndPoint.swift */; };
+		ADBB60842861B595003E26A3 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60832861B595003E26A3 /* EndPoint.swift */; };
 		ADBB60872861B5C8003E26A3 /* ShortGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60862861B5C8003E26A3 /* ShortGameModel.swift */; };
 		ADBB60892861B5E1003E26A3 /* ExtendedGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60882861B5E1003E26A3 /* ExtendedGameModel.swift */; };
 		ADBB608B2861B600003E26A3 /* SystemRequirementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB608A2861B600003E26A3 /* SystemRequirementsModel.swift */; };
@@ -82,6 +83,7 @@
 		AD849D83286EF4FB00C41792 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		AD849DC62875603E00C41792 /* free-to-game-unit-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "free-to-game-unit-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD849DD0287560C300C41792 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
+		AD849DD3287573BC00C41792 /* EndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointTests.swift; sourceTree = "<group>"; };
 		AD8565822862295400BA430A /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		AD856585286229A000BA430A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		AD856588286330E000BA430A /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
@@ -118,7 +120,7 @@
 		AD8565D4286D843700BA430A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ADBB607F2861B54E003E26A3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		ADBB60812861B572003E26A3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		ADBB60832861B595003E26A3 /* API+EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+EndPoint.swift"; sourceTree = "<group>"; };
+		ADBB60832861B595003E26A3 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		ADBB60862861B5C8003E26A3 /* ShortGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortGameModel.swift; sourceTree = "<group>"; };
 		ADBB60882861B5E1003E26A3 /* ExtendedGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedGameModel.swift; sourceTree = "<group>"; };
 		ADBB608A2861B600003E26A3 /* SystemRequirementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemRequirementsModel.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				AD849DD0287560C300C41792 /* NetworkErrorTests.swift */,
+				AD849DD3287573BC00C41792 /* EndPointTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -313,7 +316,7 @@
 			children = (
 				ADBB60812861B572003E26A3 /* NetworkError.swift */,
 				ADBB607F2861B54E003E26A3 /* API.swift */,
-				ADBB60832861B595003E26A3 /* API+EndPoint.swift */,
+				ADBB60832861B595003E26A3 /* EndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD849DD4287573BC00C41792 /* EndPointTests.swift in Sources */,
 				AD849DD1287560C300C41792 /* NetworkErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,7 +594,7 @@
 				ADBEB65228608644008D44B4 /* AppCoordinator.swift in Sources */,
 				AD8565BD286C39C400BA430A /* ImageCarouselView.swift in Sources */,
 				AD8565C1286C3C1700BA430A /* Games.swift in Sources */,
-				ADBB60842861B595003E26A3 /* API+EndPoint.swift in Sources */,
+				ADBB60842861B595003E26A3 /* EndPoint.swift in Sources */,
 				ADBB60822861B572003E26A3 /* NetworkError.swift in Sources */,
 				ADBEB65628608695008D44B4 /* MainCoordinator.swift in Sources */,
 				AD85658E2863665700BA430A /* GameCellModel.swift in Sources */,
