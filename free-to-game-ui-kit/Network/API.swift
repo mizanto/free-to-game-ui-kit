@@ -22,7 +22,7 @@ struct API {
         let (data, response) = try await URLSession.shared.data(for: request)
         
         guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
-            throw NetworkError.unknown(nil)
+            throw NetworkError(code: nil)
         }
         
         if 200..<300 ~= statusCode {
@@ -32,7 +32,7 @@ struct API {
                 throw NetworkError.parsing
             }
         } else {
-            throw NetworkError.error(code: statusCode)
+            throw NetworkError(code: statusCode)
         }
     }
     

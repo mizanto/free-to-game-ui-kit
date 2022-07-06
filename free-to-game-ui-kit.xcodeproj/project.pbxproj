@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		237248835F1E67E7C8DE0D29 /* Pods_free_to_game_ui_kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F6F65F3871C22290F69633 /* Pods_free_to_game_ui_kit.framework */; };
 		AD849D84286EF4FB00C41792 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD849D83286EF4FB00C41792 /* UIFont+Extension.swift */; };
+		AD849DD1287560C300C41792 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD849DD0287560C300C41792 /* NetworkErrorTests.swift */; };
 		AD8565832862295400BA430A /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565822862295400BA430A /* GameCell.swift */; };
 		AD856586286229A000BA430A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD856585286229A000BA430A /* UIView+Extension.swift */; };
 		AD856589286330E000BA430A /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD856588286330E000BA430A /* TagView.swift */; };
@@ -64,11 +65,23 @@
 		ADBEB65928608700008D44B4 /* EmptyViewControllerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBEB65828608700008D44B4 /* EmptyViewControllerAssembly.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AD849DCA2875603E00C41792 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADBEB62C286085A8008D44B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADBEB633286085A8008D44B4;
+			remoteInfo = "free-to-game-ui-kit";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		809C746846DF78657648A85B /* Pods-free-to-game-ui-kit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-free-to-game-ui-kit.debug.xcconfig"; path = "Target Support Files/Pods-free-to-game-ui-kit/Pods-free-to-game-ui-kit.debug.xcconfig"; sourceTree = "<group>"; };
 		902AF9A75D3487C143F1E05F /* Pods-free-to-game-ui-kit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-free-to-game-ui-kit.release.xcconfig"; path = "Target Support Files/Pods-free-to-game-ui-kit/Pods-free-to-game-ui-kit.release.xcconfig"; sourceTree = "<group>"; };
 		A7F6F65F3871C22290F69633 /* Pods_free_to_game_ui_kit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_free_to_game_ui_kit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD849D83286EF4FB00C41792 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		AD849DC62875603E00C41792 /* free-to-game-unit-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "free-to-game-unit-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD849DD0287560C300C41792 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 		AD8565822862295400BA430A /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		AD856585286229A000BA430A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		AD856588286330E000BA430A /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
@@ -127,6 +140,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AD849DC32875603E00C41792 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADBEB631286085A8008D44B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,6 +165,30 @@
 				902AF9A75D3487C143F1E05F /* Pods-free-to-game-ui-kit.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AD849DC72875603E00C41792 /* free-to-game-unit-tests */ = {
+			isa = PBXGroup;
+			children = (
+				AD849DD2287560CE00C41792 /* Cases */,
+			);
+			path = "free-to-game-unit-tests";
+			sourceTree = "<group>";
+		};
+		AD849DCF2875606F00C41792 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AD849DD0287560C300C41792 /* NetworkErrorTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		AD849DD2287560CE00C41792 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				AD849DCF2875606F00C41792 /* Network */,
+			);
+			path = Cases;
 			sourceTree = "<group>";
 		};
 		AD8565842862298500BA430A /* Extensions */ = {
@@ -264,14 +308,14 @@
 			path = InfoView;
 			sourceTree = "<group>";
 		};
-		ADBB607E2861B52E003E26A3 /* API */ = {
+		ADBB607E2861B52E003E26A3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				ADBB60812861B572003E26A3 /* NetworkError.swift */,
 				ADBB607F2861B54E003E26A3 /* API.swift */,
 				ADBB60832861B595003E26A3 /* API+EndPoint.swift */,
 			);
-			path = API;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		ADBB60852861B5A8003E26A3 /* RawModels */ = {
@@ -301,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				ADBEB636286085A8008D44B4 /* free-to-game-ui-kit */,
+				AD849DC72875603E00C41792 /* free-to-game-unit-tests */,
 				ADBEB635286085A8008D44B4 /* Products */,
 				4ABF92740DA77EB966542707 /* Pods */,
 				D6B0AA5DEC9A05475BACA4C2 /* Frameworks */,
@@ -311,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				ADBEB634286085A8008D44B4 /* free-to-game-ui-kit.app */,
+				AD849DC62875603E00C41792 /* free-to-game-unit-tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,7 +366,7 @@
 			children = (
 				ADBEB64B286085BC008D44B4 /* Application */,
 				ADBEB65328608672008D44B4 /* Flows */,
-				ADBB607E2861B52E003E26A3 /* API */,
+				ADBB607E2861B52E003E26A3 /* Network */,
 				ADBB60852861B5A8003E26A3 /* RawModels */,
 				AD856587286330AE00BA430A /* CommonViews */,
 				AD85659328636C4700BA430A /* Helpers */,
@@ -390,6 +436,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AD849DC52875603E00C41792 /* free-to-game-unit-tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD849DCC2875603E00C41792 /* Build configuration list for PBXNativeTarget "free-to-game-unit-tests" */;
+			buildPhases = (
+				AD849DC22875603E00C41792 /* Sources */,
+				AD849DC32875603E00C41792 /* Frameworks */,
+				AD849DC42875603E00C41792 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD849DCB2875603E00C41792 /* PBXTargetDependency */,
+			);
+			name = "free-to-game-unit-tests";
+			productName = "free-to-game-unit-tests";
+			productReference = AD849DC62875603E00C41792 /* free-to-game-unit-tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		ADBEB633286085A8008D44B4 /* free-to-game-ui-kit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADBEB648286085A9008D44B4 /* Build configuration list for PBXNativeTarget "free-to-game-ui-kit" */;
@@ -419,6 +483,10 @@
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					AD849DC52875603E00C41792 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = ADBEB633286085A8008D44B4;
+					};
 					ADBEB633286085A8008D44B4 = {
 						CreatedOnToolsVersion = 13.3;
 					};
@@ -438,11 +506,19 @@
 			projectRoot = "";
 			targets = (
 				ADBEB633286085A8008D44B4 /* free-to-game-ui-kit */,
+				AD849DC52875603E00C41792 /* free-to-game-unit-tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AD849DC42875603E00C41792 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADBEB632286085A8008D44B4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -498,6 +574,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AD849DC22875603E00C41792 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD849DD1287560C300C41792 /* NetworkErrorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADBEB630286085A8008D44B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -558,6 +642,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		AD849DCB2875603E00C41792 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADBEB633286085A8008D44B4 /* free-to-game-ui-kit */;
+			targetProxy = AD849DCA2875603E00C41792 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		AD8565D5286D843700BA430A /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -578,6 +670,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AD849DCD2875603E00C41792 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UER9S2EB72;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "home.free-to-game-unit-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/free-to-game-ui-kit.app/free-to-game-ui-kit";
+			};
+			name = Debug;
+		};
+		AD849DCE2875603E00C41792 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UER9S2EB72;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "home.free-to-game-unit-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/free-to-game-ui-kit.app/free-to-game-ui-kit";
+			};
+			name = Release;
+		};
 		ADBEB646286085A9008D44B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -755,6 +883,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AD849DCC2875603E00C41792 /* Build configuration list for PBXNativeTarget "free-to-game-unit-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD849DCD2875603E00C41792 /* Debug */,
+				AD849DCE2875603E00C41792 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ADBEB62F286085A8008D44B4 /* Build configuration list for PBXProject "free-to-game-ui-kit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
