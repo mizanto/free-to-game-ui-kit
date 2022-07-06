@@ -9,7 +9,7 @@ import Combine
 import UIKit
 
 final class GamesViewModel: NSObject {
-    private let api: API
+    private let client: Client
     private let onSelect: (String, Int) -> ()
     
     private var stateSubject = CurrentValueSubject<Games.State, Never>(.empty(NSLocalizedString("games.empty.title", comment: "")))
@@ -24,8 +24,8 @@ final class GamesViewModel: NSObject {
     
     private var models: [ShortGameModel] = []
     
-    init(api: API, onSelect: @escaping (String, Int) -> ()) {
-        self.api = api
+    init(client: Client, onSelect: @escaping (String, Int) -> ()) {
+        self.client = client
         self.onSelect = onSelect
         super.init()
         
@@ -57,7 +57,7 @@ final class GamesViewModel: NSObject {
         Task {
             do {
                 stateSubject.send(.loading(NSLocalizedString("games.loading.title", comment: "")))
-                models = try await api.games()
+                models = try await client.get(endpoint: .games)
                 if models.isEmpty {
                     stateSubject.send(.empty(NSLocalizedString("games.empty.title", comment: "")))
                 } else {

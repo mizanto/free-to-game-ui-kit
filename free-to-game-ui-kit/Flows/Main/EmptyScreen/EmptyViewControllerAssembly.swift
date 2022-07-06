@@ -10,8 +10,7 @@ import UIKit
 final class EmptyViewControllerAssembly {
     
     static func build() -> UIViewController {
-        let vc = EmptyViewController()
-        return vc
+        return EmptyViewController()
     }
     
 }

@@ -45,7 +45,16 @@
 		AD8565CE286C52C200BA430A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565CD286C52C200BA430A /* WebViewController.swift */; };
 		AD8565D0286C56F400BA430A /* WebViewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565CF286C56F400BA430A /* WebViewAssembly.swift */; };
 		AD8565D3286D843700BA430A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD8565D5286D843700BA430A /* Localizable.strings */; };
-		ADBB60802861B54E003E26A3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB607F2861B54E003E26A3 /* API.swift */; };
+		AD950CE628759082000785E5 /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950CE528759082000785E5 /* MockSession.swift */; };
+		AD950CE8287590C2000785E5 /* URLSessionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950CE7287590C2000785E5 /* URLSessionCompatible.swift */; };
+		AD950CEA287595D1000785E5 /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950CE9287595D1000785E5 /* ClientTests.swift */; };
+		AD950CED2875A915000785E5 /* XCTest+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950CEC2875A915000785E5 /* XCTest+Helpers.swift */; };
+		AD950CEF2875A957000785E5 /* HTTPURLResponse+Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950CEE2875A957000785E5 /* HTTPURLResponse+Fake.swift */; };
+		AD950CF32875AFB7000785E5 /* valid_games.json in Resources */ = {isa = PBXBuildFile; fileRef = AD950CF22875AFB7000785E5 /* valid_games.json */; };
+		AD950CF52875B03A000785E5 /* invalid_games.json in Resources */ = {isa = PBXBuildFile; fileRef = AD950CF42875B03A000785E5 /* invalid_games.json */; };
+		AD950CF92875B9B2000785E5 /* valid_game_info.json in Resources */ = {isa = PBXBuildFile; fileRef = AD950CF82875B9B2000785E5 /* valid_game_info.json */; };
+		AD950CFB2875BA5A000785E5 /* invalid_game_info.json in Resources */ = {isa = PBXBuildFile; fileRef = AD950CFA2875BA5A000785E5 /* invalid_game_info.json */; };
+		ADBB60802861B54E003E26A3 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB607F2861B54E003E26A3 /* Client.swift */; };
 		ADBB60822861B572003E26A3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60812861B572003E26A3 /* NetworkError.swift */; };
 		ADBB60842861B595003E26A3 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60832861B595003E26A3 /* EndPoint.swift */; };
 		ADBB60872861B5C8003E26A3 /* ShortGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60862861B5C8003E26A3 /* ShortGameModel.swift */; };
@@ -118,7 +127,16 @@
 		AD8565CD286C52C200BA430A /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AD8565CF286C56F400BA430A /* WebViewAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewAssembly.swift; sourceTree = "<group>"; };
 		AD8565D4286D843700BA430A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ADBB607F2861B54E003E26A3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		AD950CE528759082000785E5 /* MockSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
+		AD950CE7287590C2000785E5 /* URLSessionCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionCompatible.swift; sourceTree = "<group>"; };
+		AD950CE9287595D1000785E5 /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
+		AD950CEC2875A915000785E5 /* XCTest+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+Helpers.swift"; sourceTree = "<group>"; };
+		AD950CEE2875A957000785E5 /* HTTPURLResponse+Fake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Fake.swift"; sourceTree = "<group>"; };
+		AD950CF22875AFB7000785E5 /* valid_games.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = valid_games.json; sourceTree = "<group>"; };
+		AD950CF42875B03A000785E5 /* invalid_games.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = invalid_games.json; sourceTree = "<group>"; };
+		AD950CF82875B9B2000785E5 /* valid_game_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = valid_game_info.json; sourceTree = "<group>"; };
+		AD950CFA2875BA5A000785E5 /* invalid_game_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = invalid_game_info.json; sourceTree = "<group>"; };
+		ADBB607F2861B54E003E26A3 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		ADBB60812861B572003E26A3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		ADBB60832861B595003E26A3 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		ADBB60862861B5C8003E26A3 /* ShortGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortGameModel.swift; sourceTree = "<group>"; };
@@ -173,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				AD849DD2287560CE00C41792 /* Cases */,
+				AD950CEB2875A8FC000785E5 /* Extensions */,
+				AD950CE42875906D000785E5 /* Mocks */,
 			);
 			path = "free-to-game-unit-tests";
 			sourceTree = "<group>";
@@ -182,6 +202,7 @@
 			children = (
 				AD849DD0287560C300C41792 /* NetworkErrorTests.swift */,
 				AD849DD3287573BC00C41792 /* EndPointTests.swift */,
+				AD950CE9287595D1000785E5 /* ClientTests.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -311,12 +332,50 @@
 			path = InfoView;
 			sourceTree = "<group>";
 		};
+		AD950CE42875906D000785E5 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				AD950CF02875AF6F000785E5 /* Classes */,
+				AD950CF12875AF7A000785E5 /* Files */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		AD950CEB2875A8FC000785E5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AD950CEC2875A915000785E5 /* XCTest+Helpers.swift */,
+				AD950CEE2875A957000785E5 /* HTTPURLResponse+Fake.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AD950CF02875AF6F000785E5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AD950CE528759082000785E5 /* MockSession.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		AD950CF12875AF7A000785E5 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD950CF22875AFB7000785E5 /* valid_games.json */,
+				AD950CF42875B03A000785E5 /* invalid_games.json */,
+				AD950CF82875B9B2000785E5 /* valid_game_info.json */,
+				AD950CFA2875BA5A000785E5 /* invalid_game_info.json */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
 		ADBB607E2861B52E003E26A3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				ADBB60812861B572003E26A3 /* NetworkError.swift */,
-				ADBB607F2861B54E003E26A3 /* API.swift */,
+				ADBB607F2861B54E003E26A3 /* Client.swift */,
 				ADBB60832861B595003E26A3 /* EndPoint.swift */,
+				AD950CE7287590C2000785E5 /* URLSessionCompatible.swift */,
+				ADBB60812861B572003E26A3 /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -519,6 +578,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD950CF32875AFB7000785E5 /* valid_games.json in Resources */,
+				AD950CFB2875BA5A000785E5 /* invalid_game_info.json in Resources */,
+				AD950CF92875B9B2000785E5 /* valid_game_info.json in Resources */,
+				AD950CF52875B03A000785E5 /* invalid_games.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,8 +644,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD950CE628759082000785E5 /* MockSession.swift in Sources */,
 				AD849DD4287573BC00C41792 /* EndPointTests.swift in Sources */,
+				AD950CED2875A915000785E5 /* XCTest+Helpers.swift in Sources */,
+				AD950CEA287595D1000785E5 /* ClientTests.swift in Sources */,
 				AD849DD1287560C300C41792 /* NetworkErrorTests.swift in Sources */,
+				AD950CEF2875A957000785E5 /* HTTPURLResponse+Fake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,12 +693,13 @@
 				AD8565832862295400BA430A /* GameCell.swift in Sources */,
 				AD856586286229A000BA430A /* UIView+Extension.swift in Sources */,
 				AD8565A3286596C600BA430A /* GameInfoAssembly.swift in Sources */,
+				AD950CE8287590C2000785E5 /* URLSessionCompatible.swift in Sources */,
 				AD8565B32866FFCB00BA430A /* HStackView.swift in Sources */,
 				AD856590286366E200BA430A /* GamesViewModel.swift in Sources */,
 				ADBB609228621E08003E26A3 /* GamesAssembly.swift in Sources */,
 				AD8565C7286C44E600BA430A /* UIColor+Extension.swift in Sources */,
 				ADBEB65928608700008D44B4 /* EmptyViewControllerAssembly.swift in Sources */,
-				ADBB60802861B54E003E26A3 /* API.swift in Sources */,
+				ADBB60802861B54E003E26A3 /* Client.swift in Sources */,
 				AD8565A02864802800BA430A /* InfoView.swift in Sources */,
 				ADBB60872861B5C8003E26A3 /* ShortGameModel.swift in Sources */,
 				AD8565C5286C425A00BA430A /* UIButton+Extension.swift in Sources */,

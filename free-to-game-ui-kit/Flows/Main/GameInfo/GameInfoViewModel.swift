@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class GameInfoViewModel {
-    private let api: API
+    private let client: Client
     private let gameId: Int
     private let onShowWeb: (URL) -> ()
     
@@ -28,9 +28,9 @@ final class GameInfoViewModel {
         return stateSubject.eraseToAnyPublisher()
     }
 
-    init(title: String?, api: API, gameId: Int, onShowWeb: @escaping (URL) -> ()) {
+    init(title: String?, client: Client, gameId: Int, onShowWeb: @escaping (URL) -> ()) {
         self.title = title
-        self.api = api
+        self.client = client
         self.gameId = gameId
         self.onShowWeb = onShowWeb
         
@@ -62,7 +62,7 @@ final class GameInfoViewModel {
         Task {
             do {
                 self.stateSubject.send(.loading(NSLocalizedString("game_info.loading.title", comment: "")))
-                self.model = try await self.api.game(by: gameId)
+                self.model = try await self.client.get(endpoint: .game(self.gameId))
                 if let model = self.model {
                     self.stateSubject.send(.value(buildGameInfoModel(from: model)))
                 } else {
