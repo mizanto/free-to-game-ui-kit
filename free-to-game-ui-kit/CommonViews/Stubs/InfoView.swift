@@ -1,5 +1,5 @@
 //
-//  StubView.swift
+//  InfoView.swift
 //  free-to-game-ui-kit
 //
 //  Created by Sergey Bendak on 23.06.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StubView: UIView {
+final class InfoView: UIView {
     
     enum StubType {
         case error

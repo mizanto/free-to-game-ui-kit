@@ -10,7 +10,7 @@ import UIKit
 extension UIViewController {
     
     func hideAnyStubs() {
-        hideStubView()
+        hideInfoView()
         hideProgressView()
     }
     
@@ -37,18 +37,18 @@ extension UIViewController {
     
     // MARK: - ErrorView
     
-    func showStubView(type: StubView.StubType, message: String, action: @escaping () -> ()) {
+    func showInfoView(type: InfoView.StubType, message: String, action: @escaping () -> ()) {
         hideAnyStubs()
         
-        let errorView = StubView(type: type, message: message, buttonTitle: "Retry", action: action)
+        let errorView = InfoView(type: type, message: message, buttonTitle: "Retry", action: action)
         view.addSubview(errorView)
         errorView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
-    func hideStubView() {
-        if let errorView = view.subviews.first(where: { $0 is StubView }) as? StubView {
+    func hideInfoView() {
+        if let errorView = view.subviews.first(where: { $0 is InfoView }) as? InfoView {
             errorView.removeFromSuperview()
         }
     }

@@ -64,14 +64,14 @@ final class GamesViewController: UIViewController {
     private func render(state: Games.State) {
         switch state {
         case .empty(let message):
-            showStubView(type: .empty, message: message, action: retry)
+            showInfoView(type: .empty, message: message, action: retry)
         case .value(_):
             hideAnyStubs()
             tableView.reloadData()
         case .loading(let title):
             showProgressView(title: title)
         case .error(let message):
-            showStubView(type: .error, message: message, action: retry)
+            showInfoView(type: .error, message: message, action: retry)
         }
     }
     

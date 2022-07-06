@@ -114,7 +114,7 @@ final class GameInfoViewController: UIViewController {
         case .loading(let message):
             showProgressView(title: message)
         case .error(let message):
-            showStubView(type: .error, message: message, action: retry)
+            showInfoView(type: .error, message: message, action: retry)
         }
     }
     

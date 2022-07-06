@@ -19,7 +19,7 @@
 		AD85659528636D0900BA430A /* StringIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659428636D0900BA430A /* StringIdentifiable.swift */; };
 		AD85659728647C9B00BA430A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659628647C9B00BA430A /* UIViewController+Extension.swift */; };
 		AD85659C28647CEC00BA430A /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659B28647CEC00BA430A /* ProgressView.swift */; };
-		AD8565A02864802800BA430A /* StubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659F2864802800BA430A /* StubView.swift */; };
+		AD8565A02864802800BA430A /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85659F2864802800BA430A /* InfoView.swift */; };
 		AD8565A3286596C600BA430A /* GameInfoAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565A2286596C600BA430A /* GameInfoAssembly.swift */; };
 		AD8565A52865973E00BA430A /* GameInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565A42865973E00BA430A /* GameInfoViewController.swift */; };
 		AD8565A72865975E00BA430A /* GameInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8565A62865975E00BA430A /* GameInfoViewModel.swift */; };
@@ -79,7 +79,7 @@
 		AD85659428636D0900BA430A /* StringIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringIdentifiable.swift; sourceTree = "<group>"; };
 		AD85659628647C9B00BA430A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		AD85659B28647CEC00BA430A /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
-		AD85659F2864802800BA430A /* StubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubView.swift; sourceTree = "<group>"; };
+		AD85659F2864802800BA430A /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		AD8565A2286596C600BA430A /* GameInfoAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoAssembly.swift; sourceTree = "<group>"; };
 		AD8565A42865973E00BA430A /* GameInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoViewController.swift; sourceTree = "<group>"; };
 		AD8565A62865975E00BA430A /* GameInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoViewModel.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				AD85659B28647CEC00BA430A /* ProgressView.swift */,
-				AD85659F2864802800BA430A /* StubView.swift */,
+				AD85659F2864802800BA430A /* InfoView.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -544,7 +544,7 @@
 				AD8565C7286C44E600BA430A /* UIColor+Extension.swift in Sources */,
 				ADBEB65928608700008D44B4 /* EmptyViewControllerAssembly.swift in Sources */,
 				ADBB60802861B54E003E26A3 /* API.swift in Sources */,
-				AD8565A02864802800BA430A /* StubView.swift in Sources */,
+				AD8565A02864802800BA430A /* InfoView.swift in Sources */,
 				ADBB60872861B5C8003E26A3 /* ShortGameModel.swift in Sources */,
 				AD8565C5286C425A00BA430A /* UIButton+Extension.swift in Sources */,
 				AD8565A52865973E00BA430A /* GameInfoViewController.swift in Sources */,
