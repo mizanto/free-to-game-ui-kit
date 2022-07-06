@@ -17,7 +17,6 @@ class MockSession: URLSessionCompatible {
         self.response = response
     }
     
-    
     func data(for request: URLRequest, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse) {
         return (data, response)
     }

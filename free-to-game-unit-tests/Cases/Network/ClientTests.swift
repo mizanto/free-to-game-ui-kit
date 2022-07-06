@@ -153,7 +153,7 @@ class ClientTests: XCTestCase {
         )
     }
     
-    func test_Client_throwsParsing_whenInvalidJson() async {
+    func test_Client_throwsParsing_whenInvalidGamesJson() async {
         // given
         guard let data = loadJson(name: "invalid_games") else {
             XCTFail("Unable to load data from a json file")
@@ -176,7 +176,7 @@ class ClientTests: XCTestCase {
         }
     }
     
-    func test_Client_parsesCorrectly_whenValidJson() async {
+    func test_Client_parsesCorrectly_whenValidGamesJson() async {
         // given
         guard let data = loadJson(name: "valid_games") else {
             XCTFail("Unable to load data from a json file")
@@ -192,6 +192,47 @@ class ClientTests: XCTestCase {
         }
         // then
         XCTAssertTrue(models.count > 0)
+    }
+    
+    func test_Client_throwsParsing_whenInvalidGameInfoJson() async {
+        // given
+        guard let data = loadJson(name: "invalid_game_info") else {
+            XCTFail("Unable to load data from a json file")
+            return
+        }
+        let sut = givenClient(data: data)
+        let expectedError = NetworkError.parsing
+        
+        do {
+            // when
+            let _: [ShortGameModel] = try await sut.get(endpoint: .game(1))
+            XCTFail("Must be thrown parsing error")
+        } catch {
+            // then
+            if let error = error as? NetworkError {
+                XCTAssertEqual(error, expectedError)
+            } else {
+                XCTFail("Thrown unknown error")
+            }
+        }
+    }
+    
+    func test_Client_parsesCorrectly_whenValidGameInfoJson() async {
+        // given
+        guard let data = loadJson(name: "valid_game_info") else {
+            XCTFail("Unable to load data from a json file")
+            return
+        }
+        let sut = givenClient(data: data)
+        var model: ExtendedGameModel?
+        // when
+        do {
+            model = try await sut.get(endpoint: .game(1))
+        } catch {
+            XCTFail("Must be parsed correctly")
+        }
+        // then
+        XCTAssertNotNil(model)
     }
     
     // MARK: - Given
