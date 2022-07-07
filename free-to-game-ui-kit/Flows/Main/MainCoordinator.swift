@@ -51,9 +51,4 @@ final class MainCoordinator: BaseCoordinator {
         let viewController = WebViewAssembly.build(url: url)
         navigationController.pushViewController(viewController, animated: true)
     }
-    
-    private func showEmptyScreen() {
-        let vc = EmptyViewControllerAssembly.build()
-        setRootViewController(vc)
-    }
 }
