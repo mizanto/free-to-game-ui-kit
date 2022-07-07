@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 protocol Client {
-    func sendRequest(endpoint: EndPoint) async throws -> Data
-    func get<T: Codable>(endpoint: EndPoint) async throws -> T
+    func getGames() async throws -> [ShortGameModel]
+    func getGameInfo(id: Int) async throws -> ExtendedGameModel
 }
 
 struct NetworkClient: Client {
@@ -25,7 +25,16 @@ struct NetworkClient: Client {
         self.session = session
     }
     
+    func getGames() async throws -> [ShortGameModel] {
+        return try await get(endpoint: .games)
+    }
+    
+    func getGameInfo(id: Int) async throws -> ExtendedGameModel {
+        return try await get(endpoint: .game(id))
+    }
+    
     func sendRequest(endpoint: EndPoint) async throws -> Data {
+        print("Request URL: \(endpoint.url)")
         let request = URLRequest(url: endpoint.url, timeoutInterval: Constants.timeoutInterval)
         
         let (data, response) = try await session.data(for: request, delegate: nil)
@@ -34,6 +43,7 @@ struct NetworkClient: Client {
             throw NetworkError(code: nil)
         }
         
+        print("Response status code: \(statusCode)")
         if 200 == statusCode {
             return data
         } else {
@@ -41,9 +51,9 @@ struct NetworkClient: Client {
         }
     }
     
-    func get<T: Codable>(endpoint: EndPoint) async throws -> T {
+    private func get<T: Codable>(endpoint: EndPoint) async throws -> T {
         do {
-            let data = try await sendRequest(endpoint: .games)
+            let data = try await sendRequest(endpoint: endpoint)
             return try decoder.decode(T.self, from: data)
         } catch is DecodingError {
             throw NetworkError.parsing

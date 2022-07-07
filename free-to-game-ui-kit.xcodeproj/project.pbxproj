@@ -54,6 +54,10 @@
 		AD950CF52875B03A000785E5 /* invalid_games.json in Resources */ = {isa = PBXBuildFile; fileRef = AD950CF42875B03A000785E5 /* invalid_games.json */; };
 		AD950CF92875B9B2000785E5 /* valid_game_info.json in Resources */ = {isa = PBXBuildFile; fileRef = AD950CF82875B9B2000785E5 /* valid_game_info.json */; };
 		AD950CFB2875BA5A000785E5 /* invalid_game_info.json in Resources */ = {isa = PBXBuildFile; fileRef = AD950CFA2875BA5A000785E5 /* invalid_game_info.json */; };
+		AD950CFD2875C69A000785E5 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950CFC2875C69A000785E5 /* MockClient.swift */; };
+		AD950D022875CC3F000785E5 /* GamesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950D012875CC3F000785E5 /* GamesViewModelTests.swift */; };
+		AD950D042876F7BE000785E5 /* Games+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950D032876F7BE000785E5 /* Games+Extension.swift */; };
+		AD950D072876F823000785E5 /* UnknownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD950D062876F823000785E5 /* UnknownError.swift */; };
 		ADBB60802861B54E003E26A3 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB607F2861B54E003E26A3 /* Client.swift */; };
 		ADBB60822861B572003E26A3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60812861B572003E26A3 /* NetworkError.swift */; };
 		ADBB60842861B595003E26A3 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB60832861B595003E26A3 /* EndPoint.swift */; };
@@ -136,6 +140,10 @@
 		AD950CF42875B03A000785E5 /* invalid_games.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = invalid_games.json; sourceTree = "<group>"; };
 		AD950CF82875B9B2000785E5 /* valid_game_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = valid_game_info.json; sourceTree = "<group>"; };
 		AD950CFA2875BA5A000785E5 /* invalid_game_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = invalid_game_info.json; sourceTree = "<group>"; };
+		AD950CFC2875C69A000785E5 /* MockClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
+		AD950D012875CC3F000785E5 /* GamesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewModelTests.swift; sourceTree = "<group>"; };
+		AD950D032876F7BE000785E5 /* Games+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Games+Extension.swift"; sourceTree = "<group>"; };
+		AD950D062876F823000785E5 /* UnknownError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownError.swift; sourceTree = "<group>"; };
 		ADBB607F2861B54E003E26A3 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		ADBB60812861B572003E26A3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		ADBB60832861B595003E26A3 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -192,6 +200,7 @@
 			children = (
 				AD849DD2287560CE00C41792 /* Cases */,
 				AD950CEB2875A8FC000785E5 /* Extensions */,
+				AD950D052876F816000785E5 /* Helpers */,
 				AD950CE42875906D000785E5 /* Mocks */,
 			);
 			path = "free-to-game-unit-tests";
@@ -210,6 +219,7 @@
 		AD849DD2287560CE00C41792 /* Cases */ = {
 			isa = PBXGroup;
 			children = (
+				AD950CFE2875CC10000785E5 /* Flows */,
 				AD849DCF2875606F00C41792 /* Network */,
 			);
 			path = Cases;
@@ -346,6 +356,7 @@
 			children = (
 				AD950CEC2875A915000785E5 /* XCTest+Helpers.swift */,
 				AD950CEE2875A957000785E5 /* HTTPURLResponse+Fake.swift */,
+				AD950D032876F7BE000785E5 /* Games+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -354,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				AD950CE528759082000785E5 /* MockSession.swift */,
+				AD950CFC2875C69A000785E5 /* MockClient.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -367,6 +379,38 @@
 				AD950CFA2875BA5A000785E5 /* invalid_game_info.json */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		AD950CFE2875CC10000785E5 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				AD950CFF2875CC1E000785E5 /* Main */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		AD950CFF2875CC1E000785E5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AD950D002875CC23000785E5 /* Games */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		AD950D002875CC23000785E5 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				AD950D012875CC3F000785E5 /* GamesViewModelTests.swift */,
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
+		AD950D052876F816000785E5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AD950D062876F823000785E5 /* UnknownError.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		ADBB607E2861B52E003E26A3 /* Network */ = {
@@ -644,11 +688,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD950D022875CC3F000785E5 /* GamesViewModelTests.swift in Sources */,
 				AD950CE628759082000785E5 /* MockSession.swift in Sources */,
 				AD849DD4287573BC00C41792 /* EndPointTests.swift in Sources */,
 				AD950CED2875A915000785E5 /* XCTest+Helpers.swift in Sources */,
 				AD950CEA287595D1000785E5 /* ClientTests.swift in Sources */,
+				AD950D072876F823000785E5 /* UnknownError.swift in Sources */,
+				AD950D042876F7BE000785E5 /* Games+Extension.swift in Sources */,
 				AD849DD1287560C300C41792 /* NetworkErrorTests.swift in Sources */,
+				AD950CFD2875C69A000785E5 /* MockClient.swift in Sources */,
 				AD950CEF2875A957000785E5 /* HTTPURLResponse+Fake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

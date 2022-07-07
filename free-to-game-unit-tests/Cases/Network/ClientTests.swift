@@ -164,7 +164,7 @@ class ClientTests: XCTestCase {
         
         do {
             // when
-            let _: [ShortGameModel] = try await sut.get(endpoint: .games)
+            _ = try await sut.getGames()
             XCTFail("Must be thrown parsing error")
         } catch {
             // then
@@ -186,7 +186,7 @@ class ClientTests: XCTestCase {
         var models: [ShortGameModel] = []
         // when
         do {
-            models = try await sut.get(endpoint: .games)
+            models = try await sut.getGames()
         } catch {
             XCTFail("Must be parsed correctly")
         }
@@ -205,7 +205,7 @@ class ClientTests: XCTestCase {
         
         do {
             // when
-            let _: [ShortGameModel] = try await sut.get(endpoint: .game(1))
+            _ = try await sut.getGameInfo(id: 1)
             XCTFail("Must be thrown parsing error")
         } catch {
             // then
@@ -227,7 +227,7 @@ class ClientTests: XCTestCase {
         var model: ExtendedGameModel?
         // when
         do {
-            model = try await sut.get(endpoint: .game(1))
+            model = try await sut.getGameInfo(id: 1)
         } catch {
             XCTFail("Must be parsed correctly")
         }

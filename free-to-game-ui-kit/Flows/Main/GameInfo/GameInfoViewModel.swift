@@ -62,7 +62,7 @@ final class GameInfoViewModel {
         Task {
             do {
                 self.stateSubject.send(.loading(NSLocalizedString("game_info.loading.title", comment: "")))
-                self.model = try await self.client.get(endpoint: .game(self.gameId))
+                self.model = try await self.client.getGameInfo(id: gameId)
                 if let model = self.model {
                     self.stateSubject.send(.value(buildGameInfoModel(from: model)))
                 } else {

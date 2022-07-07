@@ -8,12 +8,19 @@
 import Combine
 import UIKit
 
-final class GamesViewModel: NSObject {
+protocol GamesViewModelProtocol: UITableViewDataSource {
+    var title: String? { get }
+    var statePublisher: AnyPublisher<Games.State, Never> { get }
+    
+    func sendEvent(_ event: Games.Event)
+}
+
+final class GamesViewModel: NSObject, GamesViewModelProtocol {
     private let client: Client
     private let onSelect: (String, Int) -> ()
     
     private var stateSubject = CurrentValueSubject<Games.State, Never>(.empty(NSLocalizedString("games.empty.title", comment: "")))
-    private var intentSubject = PassthroughSubject<Games.Intent, Never>()
+    private var eventSubject = PassthroughSubject<Games.Event, Never>()
     private var subscriptions = Set<AnyCancellable>()
     
     var title: String? = NSLocalizedString("games.title", comment: "")
@@ -32,16 +39,16 @@ final class GamesViewModel: NSObject {
         bind()
     }
     
-    func sendEvent(_ intent: Games.Intent) {
-        intentSubject.send(intent)
+    func sendEvent(_ event: Games.Event) {
+        eventSubject.send(event)
     }
     
     private func bind() {
-        intentSubject
+        eventSubject
             .print("ViewModel")
-            .sink { [weak self] intent in
+            .sink { [weak self] event in
                 guard let self = self else { return }
-                switch intent {
+                switch event {
                 case .fetchData:
                     self.fetchGames()
                 case .selectRow(let row):
@@ -57,12 +64,12 @@ final class GamesViewModel: NSObject {
         Task {
             do {
                 stateSubject.send(.loading(NSLocalizedString("games.loading.title", comment: "")))
-                models = try await client.get(endpoint: .games)
+                models = try await client.getGames()
                 if models.isEmpty {
                     stateSubject.send(.empty(NSLocalizedString("games.empty.title", comment: "")))
                 } else {
                     let cellModels = models.map { $0.toGameCellModel() }
-                    stateSubject.send(.value(cellModels))
+                    stateSubject.send(.value(models: cellModels, update: true))
                 }
             } catch {
                 let message = message(for: error)
@@ -80,16 +87,21 @@ final class GamesViewModel: NSObject {
     }
     
     private func select(row: Int) {
+        guard case let Games.State.value(cellModels, _) = stateSubject.value,
+              !models.isEmpty else {
+            return
+        }
         let title = models[row].title
         let id = models[row].id
         onSelect(title, id)
+        stateSubject.send(.value(models: cellModels, update: false))
     }
 
 }
 
 extension GamesViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if case let Games.State.value(models) = stateSubject.value {
+        if case let Games.State.value(models, _) = stateSubject.value {
             return models.count
         } else {
             return 0
@@ -97,7 +109,7 @@ extension GamesViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard case let Games.State.value(models) = stateSubject.value else {
+        guard case let Games.State.value(models, _) = stateSubject.value else {
             return UITableViewCell()
         }
         

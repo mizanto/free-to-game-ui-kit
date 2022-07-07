@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GameCellModel {
+struct GameCellModel: Equatable {
     let thumbnailUrl: URL
     let title: String
     let info: String
