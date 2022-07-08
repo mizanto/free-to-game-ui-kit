@@ -11,7 +11,7 @@ import Foundation
 class MockClient: Client {
     var error: Error?
     var games: [ShortGameModel] = []
-    var gameInfo: ExtendedGameModel?
+    var gameInfo: ExtendedGameModel = MockClient.validExtendedGameModel
 
     func getGames() async throws -> [ShortGameModel] {
         if let error = error {
@@ -24,10 +24,10 @@ class MockClient: Client {
         if let error = error {
             throw error
         }
-        return gameInfo!
+        return gameInfo
     }
     
-    static let validGames: [ShortGameModel] = [
+    static let validShortGameModels: [ShortGameModel] = [
         ShortGameModel(
             id: 1,
             title: "Title1",
@@ -47,6 +47,26 @@ class MockClient: Client {
     ]
     
     static var validCellModels: [GameCellModel] {
-        return validGames.map { $0.toGameCellModel() }
+        return validShortGameModels.map { $0.toGameCellModel() }
+    }
+    
+    static var validExtendedGameModel: ExtendedGameModel {
+        return ExtendedGameModel(
+            id: 0,
+            title: "title",
+            thumbnail: URL(string: "http://some_url.com")!,
+            fullDescription: "fullDescription",
+            url: URL(string: "http://some_url.com")!,
+            genre: "Shooter",
+            platform: "PC",
+            publisher: "Publisher",
+            developer: "Developer",
+            releaseDate: "01-01-2022",
+            systemRequirements: SystemRequirementsModel(os: "", processor: "", memory: "", graphics: "", storage: ""),
+            screenshots: [])
+    }
+    
+    static var validGameInfoModel: GameInfoModel {
+        return validExtendedGameModel.toGameInfoModel()
     }
 }

@@ -61,15 +61,13 @@ final class GamesViewController: UIViewController {
             .store(in: &subscriptions)
     }
     
-    private func render(state: Games.State) {
+    private func render(state: ViewState<[GameCellModel]>) {
         switch state {
         case .empty(let message):
             showInfoView(type: .empty, message: message, action: retry)
-        case .value(_, let update):
-            if update {
-                hideAnyStubs()
-                tableView.reloadData()
-            }
+        case .content(_):
+            hideAnyStubs()
+            tableView.reloadData()
         case .loading(let title):
             showProgressView(title: title)
         case .error(let message):
