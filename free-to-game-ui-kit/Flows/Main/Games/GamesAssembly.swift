@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 final class GamesAssembly {
-    static func build(api: API, onSelect: @escaping (String, Int) -> ()) -> UIViewController {
-        let viewModel = GamesViewModel(api: api, onSelect: onSelect)
+    static func build(client: Client, onSelect: @escaping (String, Int) -> ()) -> UIViewController {
+        let viewModel = GamesViewModel(client: client, onSelect: onSelect)
         let viewController = GamesViewController()
         viewController.viewModel = viewModel
         return viewController

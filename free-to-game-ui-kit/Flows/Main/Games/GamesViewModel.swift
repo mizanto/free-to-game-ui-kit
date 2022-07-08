@@ -8,40 +8,49 @@
 import Combine
 import UIKit
 
-final class GamesViewModel: NSObject {
-    private let api: API
-    private let onSelect: (String, Int) -> ()
+protocol GamesViewModelProtocol: UITableViewDataSource {
+    var title: String? { get }
+    var statePublisher: AnyPublisher<ViewState<[GameCellModel]>, Never> { get }
     
-    private var stateSubject = CurrentValueSubject<Games.State, Never>(.empty(NSLocalizedString("games.empty.title", comment: "")))
-    private var intentSubject = PassthroughSubject<Games.Intent, Never>()
-    private var subscriptions = Set<AnyCancellable>()
+    func sendEvent(_ event: GamesEvent)
+}
+
+final class GamesViewModel: NSObject, GamesViewModelProtocol {
     
+    // MARK: - GamesViewModelProtocol
     var title: String? = NSLocalizedString("games.title", comment: "")
-    
-    var statePublisher: AnyPublisher<Games.State, Never> {
+    var statePublisher: AnyPublisher<ViewState<[GameCellModel]>, Never> {
         return stateSubject.eraseToAnyPublisher()
     }
     
+    func sendEvent(_ event: GamesEvent) {
+        eventSubject.send(event)
+    }
+    
+    // MARK: - Private
+    private let client: Client
+    private let onSelect: (String, Int) -> ()
+    
+    private var stateSubject = CurrentValueSubject<ViewState<[GameCellModel]>, Never>(.empty(NSLocalizedString("games.empty.title", comment: "")))
+    private var eventSubject = PassthroughSubject<GamesEvent, Never>()
+    private var subscriptions = Set<AnyCancellable>()
+    
     private var models: [ShortGameModel] = []
     
-    init(api: API, onSelect: @escaping (String, Int) -> ()) {
-        self.api = api
+    init(client: Client, onSelect: @escaping (String, Int) -> ()) {
+        self.client = client
         self.onSelect = onSelect
         super.init()
         
         bind()
     }
     
-    func sendEvent(_ intent: Games.Intent) {
-        intentSubject.send(intent)
-    }
-    
     private func bind() {
-        intentSubject
+        eventSubject
             .print("ViewModel")
-            .sink { [weak self] intent in
+            .sink { [weak self] event in
                 guard let self = self else { return }
-                switch intent {
+                switch event {
                 case .fetchData:
                     self.fetchGames()
                 case .selectRow(let row):
@@ -57,12 +66,12 @@ final class GamesViewModel: NSObject {
         Task {
             do {
                 stateSubject.send(.loading(NSLocalizedString("games.loading.title", comment: "")))
-                models = try await api.games()
+                models = try await client.getGames()
                 if models.isEmpty {
                     stateSubject.send(.empty(NSLocalizedString("games.empty.title", comment: "")))
                 } else {
                     let cellModels = models.map { $0.toGameCellModel() }
-                    stateSubject.send(.value(cellModels))
+                    stateSubject.send(.content(cellModels))
                 }
             } catch {
                 let message = message(for: error)
@@ -80,6 +89,7 @@ final class GamesViewModel: NSObject {
     }
     
     private func select(row: Int) {
+        if models.isEmpty { return }
         let title = models[row].title
         let id = models[row].id
         onSelect(title, id)
@@ -89,7 +99,7 @@ final class GamesViewModel: NSObject {
 
 extension GamesViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if case let Games.State.value(models) = stateSubject.value {
+        if case let .content(models) = stateSubject.value {
             return models.count
         } else {
             return 0
@@ -97,7 +107,7 @@ extension GamesViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard case let Games.State.value(models) = stateSubject.value else {
+        guard case let .content(models) = stateSubject.value else {
             return UITableViewCell()
         }
         

@@ -10,7 +10,7 @@ import Kingfisher
 import UIKit
 
 final class GamesViewController: UIViewController {
-    var viewModel: GamesViewModel!
+    var viewModel: GamesViewModelProtocol!
     
     private var tableView: UITableView!
     
@@ -61,11 +61,11 @@ final class GamesViewController: UIViewController {
             .store(in: &subscriptions)
     }
     
-    private func render(state: Games.State) {
+    private func render(state: ViewState<[GameCellModel]>) {
         switch state {
         case .empty(let message):
             showInfoView(type: .empty, message: message, action: retry)
-        case .value(_):
+        case .content(_):
             hideAnyStubs()
             tableView.reloadData()
         case .loading(let title):

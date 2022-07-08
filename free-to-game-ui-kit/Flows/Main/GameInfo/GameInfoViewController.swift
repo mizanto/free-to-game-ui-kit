@@ -16,7 +16,7 @@ final class GameInfoViewController: UIViewController {
         static let buttonVerticalPadding: CGFloat = 12
     }
     
-    var viewModel: GameInfoViewModel!
+    var viewModel: GameInfoViewModelProtocol!
     
     private var scrollView: UIScrollView!
     private var infoView: GameInfoView!
@@ -107,10 +107,12 @@ final class GameInfoViewController: UIViewController {
             .store(in: &subscriptions)
     }
     
-    private func render(state: GameInfo.State) {
+    private func render(state: ViewState<GameInfoModel>) {
         switch state {
-        case .value(let infoModel):
+        case .content(let infoModel):
             showInfoView(from: infoModel)
+        case .empty(let message):
+            showInfoView(type: .empty, message: message, action: retry)
         case .loading(let message):
             showProgressView(title: message)
         case .error(let message):

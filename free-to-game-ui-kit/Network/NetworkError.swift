@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkError: LocalizedError {
+enum NetworkError: LocalizedError, Equatable {
     case badRequest
     case forbiden
     case notFound
@@ -16,6 +16,22 @@ enum NetworkError: LocalizedError {
     case unavailable
     case parsing
     case unknown(Int?)
+    
+    init(code: Int?) {
+        guard let code = code else {
+            self = .unknown(nil)
+            return
+        }
+        switch code {
+        case 400: self = .badRequest
+        case 403: self = .forbiden
+        case 404: self = .notFound
+        case 429: self = .toManyRequests
+        case 500: self = .internalServerError
+        case 503: self = .unavailable
+        default:  self = .unknown(code)
+        }
+    }
     
     var errorDescription: String? {
         switch self {
@@ -27,18 +43,6 @@ enum NetworkError: LocalizedError {
             return NSLocalizedString("error.network.many_requests", comment: "")
         case .unknown(_):
             return NSLocalizedString("error.unknown", comment: "")
-        }
-    }
-    
-    static func error(code: Int) -> NetworkError {
-        switch code {
-        case 400: return .badRequest
-        case 403: return .forbiden
-        case 404: return .notFound
-        case 429: return .toManyRequests
-        case 500: return .internalServerError
-        case 503: return .unavailable
-        default:  return .unknown(code)
         }
     }
 }

@@ -7,7 +7,10 @@
 
 import UIKit
 
-typealias TitledInfo = (title: String, info: String?)
+struct TitledInfo: Equatable {
+    let title: String
+    let info: String?
+}
 
 final class TitleInfoView: UIView {
     var separator: String = ":"

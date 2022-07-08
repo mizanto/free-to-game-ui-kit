@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ShortGameModel: Codable, CustomStringConvertible {
+struct ShortGameModel: Codable, CustomStringConvertible, Equatable {
     let id: Int
     let title: String
     let thumbnail: URL

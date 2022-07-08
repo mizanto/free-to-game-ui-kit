@@ -21,7 +21,7 @@
 "games.loading.title" = "Trying to laod games...";
 
 // game info
-
+"game_info.empty.title" = "No game info";
 "game_info.loading.title" = "Trying to laod game info...";
 
 "game_info.action_button" = "Play now!";
